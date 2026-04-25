@@ -1,0 +1,61 @@
+ID,Department,Seniority,Overall_Satisfaction,Work_Life_Balance,Professional_Growth,Peer_Relations,Management_Relations,Work_Tools,Would_Recommend,Comment
+SRV-001,Development,< 1 year,3,4,4,4,4,3,No,I would like more clarity on company objectives.
+SRV-002,Development,5-10 years,3,4,3,5,4,3,Yes,
+SRV-003,Development,< 1 year,3,4,3,4,3,4,No,"Great work environment, helpful colleagues."
+SRV-004,Sales,3-5 years,2,4,2,4,2,3,No,
+SRV-005,Marketing,3-5 years,4,3,2,3,2,2,Maybe,Management doesn't listen enough to our suggestions.
+SRV-006,Development,1-3 years,4,3,3,5,3,4,Yes,Too many pointless meetings that take time away from real work.
+SRV-007,Development,3-5 years,3,3,3,4,4,3,Yes,
+SRV-008,Sales,< 1 year,3,3,2,3,1,4,No,"I like remote work, I hope it continues."
+SRV-009,Sales,5-10 years,3,3,3,3,3,4,Yes,The work tools are outdated.
+SRV-010,Sales,> 10 years,4,4,3,3,3,3,No,Too many pointless meetings that take time away from real work.
+SRV-011,Support,5-10 years,2,3,2,4,3,1,No,The company is growing and you can feel the positive energy.
+SRV-012,Sales,1-3 years,2,3,1,4,3,3,Yes,The work tools are outdated.
+SRV-013,Marketing,3-5 years,4,3,3,5,4,3,Yes,I appreciate the flexible hours.
+SRV-014,Sales,> 10 years,2,2,2,3,1,3,Maybe,Too many pointless meetings that take time away from real work.
+SRV-015,Administration,< 1 year,3,3,2,3,2,2,Maybe,"Too much workload, more hires are needed."
+SRV-016,Administration,3-5 years,3,2,1,4,3,3,Yes,The company is growing and you can feel the positive energy.
+SRV-017,Support,< 1 year,3,2,2,3,1,3,Maybe,
+SRV-018,Sales,5-10 years,3,3,3,5,2,3,Yes,Communication between departments is a serious problem.
+SRV-019,Support,< 1 year,2,2,1,4,2,2,Yes,
+SRV-020,Administration,5-10 years,1,3,3,4,2,1,Yes,
+SRV-021,Development,3-5 years,3,4,2,5,3,3,Yes,Too many pointless meetings that take time away from real work.
+SRV-022,Support,< 1 year,2,2,3,4,2,1,No,
+SRV-023,Marketing,> 10 years,4,3,3,4,3,2,Yes,
+SRV-024,Development,< 1 year,3,4,3,5,3,4,Yes,Too many pointless meetings that take time away from real work.
+SRV-025,Support,> 10 years,4,3,1,3,1,2,Maybe,Promotion opportunities are not clear.
+SRV-026,Marketing,1-3 years,5,3,2,5,3,3,No,Communication between departments is a serious problem.
+SRV-027,Administration,1-3 years,3,2,2,4,3,3,No,"I like remote work, I hope it continues."
+SRV-028,Support,5-10 years,1,2,3,4,1,3,No,I would like more clarity on company objectives.
+SRV-029,Support,5-10 years,3,3,3,4,1,2,Maybe,
+SRV-030,Sales,> 10 years,2,4,4,5,3,3,Yes,"I like remote work, I hope it continues."
+SRV-031,Administration,1-3 years,3,4,1,4,2,2,Yes,The work tools are outdated.
+SRV-032,Support,5-10 years,2,3,1,2,3,2,No,
+SRV-033,Support,1-3 years,1,3,2,3,3,2,No,
+SRV-034,Development,< 1 year,3,3,3,5,3,3,Yes,Good professional growth opportunities.
+SRV-035,Administration,5-10 years,2,3,2,3,3,1,No,The company is growing and you can feel the positive energy.
+SRV-036,Sales,> 10 years,4,4,4,5,3,4,Yes,The work tools are outdated.
+SRV-037,Support,3-5 years,1,2,1,4,3,3,No,"I like remote work, I hope it continues."
+SRV-038,Sales,3-5 years,4,2,2,3,4,2,No,Management doesn't listen enough to our suggestions.
+SRV-039,Development,1-3 years,4,5,3,4,2,2,No,Too many pointless meetings that take time away from real work.
+SRV-040,Marketing,< 1 year,3,2,4,3,3,3,No,
+SRV-041,Marketing,< 1 year,4,2,3,4,3,3,Maybe,Communication between departments is a serious problem.
+SRV-042,Marketing,< 1 year,4,3,3,5,2,3,Yes,Promotion opportunities are not clear.
+SRV-043,Marketing,5-10 years,2,2,1,5,2,2,Maybe,The salary is not competitive compared to the market.
+SRV-044,Administration,5-10 years,2,4,3,4,3,3,No,"I like remote work, I hope it continues."
+SRV-045,Administration,> 10 years,3,4,1,3,2,4,Yes,"I like remote work, I hope it continues."
+SRV-046,Marketing,> 10 years,5,4,1,3,4,4,No,Internal training could be improved.
+SRV-047,Development,> 10 years,5,3,3,5,4,3,Maybe,Good professional growth opportunities.
+SRV-048,Support,1-3 years,3,2,3,4,2,1,No,The salary is not competitive compared to the market.
+SRV-049,Support,3-5 years,3,2,3,2,1,3,No,"Great work environment, helpful colleagues."
+SRV-050,Development,3-5 years,2,4,3,5,3,4,Maybe,"I like remote work, I hope it continues."
+SRV-051,Administration,> 10 years,2,3,3,5,3,2,Yes,"Too much workload, more hires are needed."
+SRV-052,Administration,5-10 years,3,2,3,3,3,2,Yes,Internal training could be improved.
+SRV-053,Development,3-5 years,4,4,4,4,3,3,Maybe,I appreciate the flexible hours.
+SRV-054,Sales,< 1 year,4,4,3,4,2,3,Yes,I appreciate the flexible hours.
+SRV-055,Marketing,5-10 years,3,4,2,4,2,4,No,Internal training could be improved.
+SRV-056,Sales,< 1 year,2,2,3,5,3,3,Maybe,
+SRV-057,Marketing,< 1 year,3,4,4,4,4,2,Yes,Too many pointless meetings that take time away from real work.
+SRV-058,Marketing,< 1 year,4,3,3,3,2,4,Yes,"I like remote work, I hope it continues."
+SRV-059,Marketing,> 10 years,2,3,3,5,3,3,Maybe,"Great work environment, helpful colleagues."
+SRV-060,Support,3-5 years,1,2,3,4,1,1,No,Communication between departments is a serious problem.

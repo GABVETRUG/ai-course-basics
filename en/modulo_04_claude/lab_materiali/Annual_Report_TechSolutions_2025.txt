@@ -1,0 +1,398 @@
+================================================================
+TECHSOLUTIONS S.R.L.
+ANNUAL REPORT 2025
+================================================================
+
+TABLE OF CONTENTS
+1. Letter from the CEO
+2. About Us
+3. Financial Results
+4. Business Unit Analysis
+5. Human Resources and Organization
+6. Innovation and Research
+7. Sustainability and Social Responsibility
+8. Risks and Opportunities
+9. Strategic Plan 2026-2028
+10. Notes and Disclaimer
+
+
+================================================================
+1. LETTER FROM THE CEO
+================================================================
+
+Dear stakeholders,
+
+2025 was a year of transformation for TechSolutions. In a
+macroeconomic context characterized by geopolitical uncertainty and
+rapid technological evolution, our company was able to seize the
+opportunities offered by Artificial Intelligence and cloud
+computing, recording an 18% revenue growth compared to the
+previous year.
+
+The most significant result was not just numerical. We successfully
+completed the migration of 85% of our clients to the cloud
+platform, a milestone that positions us as a leader in the Italian
+SME segment for cloud-based management solutions.
+
+Looking ahead, our Strategic Plan 2026-2028 is built on three
+pillars: international expansion (DACH and Iberia markets),
+AI integration into our products, and development of the training
+channel as a second revenue stream.
+
+The biggest challenge remains talent attraction and retention.
+The 22% turnover in the Development department demands a serious
+reflection on our value proposition as an employer. On this front,
+the new "TechGrowth" program represents our concrete response.
+
+I thank all employees, clients, and partners for the trust they
+have placed in us. The best is yet to come.
+
+Maria Conti
+Chief Executive Officer
+
+
+================================================================
+2. ABOUT US
+================================================================
+
+TechSolutions S.r.l. was founded in 2008 in Milan with the
+mission of making technology accessible to small and medium-sized
+Italian enterprises.
+
+COMPANY DATA
+- Company name: TechSolutions S.r.l.
+- Registered office: Via dell'Innovazione 42, 20135 Milano
+- Year of foundation: 2008
+- Employees: 127 (as of 12/31/2025)
+- Revenue 2025: 14.2 million euros
+- Sector: Management software and IT services for SMEs
+
+PRODUCTS AND SERVICES
+- GestPro Cloud: cloud-based ERP management software
+- GestPro Analytics: business intelligence module
+- Premium Support: dedicated 24/7 technical support
+- TechAcademy: IT training programs for businesses
+
+CLIENTS
+Over 2,400 client companies throughout Italy, predominantly
+in the 10-250 employee segment. Main sectors: manufacturing
+(35%), professional services (25%), retail (20%), other (20%).
+
+CERTIFICATIONS
+- ISO 9001:2015 (Quality)
+- ISO 27001:2022 (Information security)
+- SOC 2 Type II (in progress, expected Q2 2026)
+
+
+================================================================
+3. FINANCIAL RESULTS
+================================================================
+
+SUMMARY INCOME STATEMENT (thousands of euros)
+
+Item                      2024        2025      Var %
+-------------------------------------------------------
+Total revenue            12,034      14,200     +18.0%
+- Licenses & subscriptions 7,220      8,946     +23.9%
+- Premium Support          2,408      2,698     +12.0%
+- Training                 1,204      1,278      +6.1%
+- Professional services    1,202      1,278      +6.3%
+Operating costs            9,626     11,076     +15.1%
+- Personnel                6,019      7,100     +18.0%
+- Cloud infrastructure     1,443      1,704     +18.1%
+- Marketing and sales      1,204      1,420     +17.9%
+- General and admin.         960        852     -11.3%
+EBITDA                     2,408      3,124     +29.7%
+EBITDA Margin              20.0%      22.0%
+Net income                 1,204      1,704     +41.5%
+
+NOTE: The reduction in general and administrative costs (-11.3%)
+is attributable to the automation of internal processes through AI
+and the renegotiation of supplier contracts.
+
+The EBITDA margin improved by 2 percentage points thanks to the
+scalability of the cloud model (decreasing marginal costs as
+the client base grows).
+
+REVENUE ANALYSIS BY QUARTER
+
+Quarter      Revenue (K)    Var. vs prev. Q
+--------------------------------------------
+Q1 2025        3,050         -
+Q2 2025        3,380         +10.8%
+Q3 2025        3,410         +0.9%
+Q4 2025        4,360         +27.9%
+
+Q4 traditionally records the peak due to annual renewals and
+new acquisitions linked to client companies' year-end budgets.
+Q3 shows a seasonal slowdown related to the summer period.
+
+
+================================================================
+4. BUSINESS UNIT ANALYSIS
+================================================================
+
+4.1 GESTPRO CLOUD (63% of revenue)
+
+The flagship product recorded 23.9% growth driven by the migration
+of on-premise clients to the cloud and the acquisition of 380 net
+new clients.
+
+Key metrics:
+- ARR (Annual Recurring Revenue): 8.9M euros (+24%)
+- Active clients: 2,420 (+18%)
+- Churn rate: 4.2% (down from 5.8% in 2024)
+- NPS (Net Promoter Score): 52 (up from 45)
+- ARPU (Average Revenue Per User): 3,696 euros/year (+5%)
+
+The introduction of the AI module for automatic invoice
+categorization (released in Q3) contributed to the reduction
+in churn and the increase in NPS.
+
+4.2 PREMIUM SUPPORT (19% of revenue)
+
+Moderate growth (+12%) but with high margins (65%).
+
+Key metrics:
+- Premium clients: 540 (22% of client base)
+- Average resolution time: 2.4 hours (target: 2 hours)
+- Support satisfaction: 4.3/5.0
+- Average monthly tickets: 1,200
+
+Critical issue: the average resolution time is still above the
+target. The plan includes the introduction of an AI chatbot for
+first-level support by Q2 2026.
+
+4.3 TECHACADEMY -- TRAINING (9% of revenue)
+
+The training business unit shows the weakest growth (+6.1%).
+Traditional classroom courses are declining (-15%), partially
+offset by online course growth (+45%).
+
+Courses delivered in 2025:
+- Classroom courses: 48 (vs 62 in 2024)
+- Live online courses: 85 (vs 52 in 2024)
+- On-demand courses: 12 titles available (vs 5 in 2024)
+- Total participants: 1,840 (+8%)
+
+Plan: in 2026, the "TechAcademy Online" e-learning platform
+will be launched with a subscription model (target: 200
+subscribers in the first year, ARPU 1,200 euros/year).
+
+4.4 PROFESSIONAL SERVICES (9% of revenue)
+
+Consulting, customization, and integration. Growth of 6.3%
+with stable margins at 40%.
+
+Note: management is evaluating whether this BU should remain
+standalone or be integrated as an ancillary service to the
+other BUs. Decision expected by Q1 2026.
+
+
+================================================================
+5. HUMAN RESOURCES AND ORGANIZATION
+================================================================
+
+HEADCOUNT
+
+Department           2024    2025    Var.
+------------------------------------------
+Development            42      48    +14%
+Sales                  22      25    +14%
+Technical Support      18      20    +11%
+Marketing              12      14    +17%
+Administration         10      10      0%
+Management              8      10    +25%
+TOTAL                 112     127    +13%
+
+AVERAGE AGE: 34 years | 42% women, 58% men
+
+TURNOVER
+Overall turnover was 19%, with a peak of 22% in the Development
+department. The main causes identified from exit interviews are:
+1. Non-competitive compensation compared to the market (52%)
+2. Limited vertical growth opportunities (28%)
+3. Excessive workload (15%)
+4. Other (5%)
+
+2025 INITIATIVES
+- "TechGrowth" program: structured career paths
+- 40% increase in training budget
+- Introduction of hybrid smart working (3 remote days/week)
+- Salary band review (completed in Q4, effective from Q1 2026)
+
+2026 OBJECTIVE: reduce turnover to 15% (-4pp vs 2025).
+
+
+================================================================
+6. INNOVATION AND RESEARCH
+================================================================
+
+R&D investment: 1.42M euros (10% of revenue, +30% vs 2024).
+
+PROJECTS COMPLETED IN 2025
+1. AI Invoice Classifier: automatic invoice categorization
+   with 94% accuracy. Released in Q3 2025.
+2. Dashboard Analytics v2: new BI interface with interactive
+   charts and customizable reports.
+3. Mobile App v3: complete rewrite of the mobile app with
+   offline functionality.
+
+PROJECTS IN PROGRESS (release planned for 2026)
+1. AI Support Chatbot: automated first-level support.
+   Objective: handle 40% of tickets without human intervention.
+   Status: beta testing with 50 pilot clients.
+2. GestPro Marketplace: platform for third-party plugins.
+   Objective: create an ecosystem of developer partners.
+   Status: architecture completed, SDK in development.
+3. Generative AI integration: enabling clients to query
+   their business data in natural language.
+   Status: proof of concept completed, roadmap being defined.
+
+PATENTS AND INTELLECTUAL PROPERTY
+- 2 patents filed in 2025 (AI Invoice Classifier, anomaly
+  detection algorithm for transactions)
+- 1 patent under evaluation
+
+
+================================================================
+7. SUSTAINABILITY AND SOCIAL RESPONSIBILITY
+================================================================
+
+ENVIRONMENTAL IMPACT
+The migration to cloud enabled the decommissioning of 3 on-premise
+data centers, with an estimated 35% reduction in CO2 emissions
+related to IT infrastructure.
+
+The cloud provider used (AWS, region eu-south-1 Milan) has
+committed to reaching 100% renewable energy by 2025.
+
+SOCIAL INITIATIVES
+- "Code4Future": mentoring program for university students
+  (24 students in 2025, 8 hired after the internship)
+- "TechForGood": 200 hours of pro-bono consulting for 5 NGOs
+- Donation of 2% of net income to STEM projects (34,000 euros)
+
+DIVERSITY & INCLUSION
+- 42% women in total workforce (+3pp vs 2024)
+- 30% women in technical roles (+5pp vs 2024)
+- 2026 objective: 35% women in technical roles, 25% in management
+
+
+================================================================
+8. RISKS AND OPPORTUNITIES
+================================================================
+
+KEY RISKS
+
+1. REVENUE CONCENTRATION
+   15% of revenue depends on the top 10 clients.
+   Mitigation: client base diversification, no single client
+   above 3% of revenue.
+
+2. TALENT RETENTION
+   Turnover in the Development department (22%) threatens
+   execution capability. Mitigation: TechGrowth program,
+   compensation review, employer branding.
+
+3. CYBERSECURITY
+   The increased attack surface related to cloud requires
+   continuous investment. Cybersecurity budget 2026: +25%.
+
+4. AI REGULATION
+   The EU AI Act will impose new requirements on products that
+   integrate AI. Expected impact: compliance costs +150K euros
+   in 2026.
+
+5. COMPETITION
+   Entry of international players (SAP Business One, Zoho)
+   into the Italian SME segment. Differentiation: localization
+   and Italian-language support.
+
+OPPORTUNITIES
+
+1. AI MARKET FOR SMEs
+   72% of Italian SMEs do not yet use AI tools. TechSolutions
+   is positioned to be the go-to partner.
+
+2. INTERNATIONAL EXPANSION
+   The DACH markets (Germany, Austria, Switzerland) and Iberia
+   show growing demand for localized cloud ERP solutions.
+
+3. TRAINING AS RECURRING REVENUE
+   The TechAcademy Online platform can generate high-margin
+   revenue with minimal incremental costs.
+
+4. STRATEGIC PARTNERSHIPS
+   Agreements with system integrators and accounting firms to
+   expand the indirect sales channel.
+
+
+================================================================
+9. STRATEGIC PLAN 2026-2028
+================================================================
+
+VISION: To become the technology partner of choice for SMEs
+in Southern Europe, with accessible AI-powered solutions.
+
+THREE-YEAR OBJECTIVES
+
+Metric                2025 (actual)   2028 (target)
+-------------------------------------------------------
+Revenue               14.2M euros     25M euros
+Active clients        2,420           4,500
+Employees             127             200
+EBITDA Margin         22%             25%
+% international rev.  2%              15%
+NPS                   52              60
+Turnover              19%             12%
+
+STRATEGIC PILLARS
+
+Pillar 1: AI-Powered Products
+- Integrate generative AI into all products by 2027
+- Launch GestPro Copilot (AI assistant for users)
+- Objective: 60% of clients use at least one AI feature
+
+Pillar 2: International Expansion
+- Q3 2026: open commercial office in Munich
+- Q1 2027: product localization for the Spanish market
+- Q4 2027: partnerships with local distributors in Austria and Switzerland
+
+Pillar 3: TechAcademy Online
+- Q2 2026: e-learning platform launch
+- 2027: 500 subscribers, recognized certifications
+- 2028: training as 15% of revenue (vs 9% currently)
+
+PLANNED INVESTMENTS
+- R&D: 5M euros over three years (+18% annually)
+- Internationalization: 2M euros (offices, marketing, localization)
+- TechAcademy: 800K euros (platform, content, marketing)
+- Total: ~8M euros, funded by operating cash flow and a credit
+  line already negotiated with Intesa Sanpaolo.
+
+
+================================================================
+10. NOTES AND DISCLAIMER
+================================================================
+
+This report was prepared for educational purposes as sample
+material for the course "AI Basics: Artificial Intelligence
+Tools for Everyone".
+
+TechSolutions S.r.l. is a fictional company. All data, names,
+and information contained in this document are invented and do
+not correspond to real people, companies, or situations.
+
+The document is designed to be used as exercise material for:
+- Long document analysis with Claude (Module 4)
+- Extracting insights and executive summaries
+- Progressive questioning at different levels of depth
+- Identifying risks, opportunities, and contradictions
+
+Length: approximately 15 pages (~2,500 words)
+Structure: 10 sections with quantitative and qualitative data
+
+================================================================
+End of Report -- TechSolutions S.r.l. -- Annual Report 2025
+================================================================

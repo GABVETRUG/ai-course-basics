@@ -1,0 +1,27 @@
+ID,Data,Cliente,Canale,Voto,Feedback
+FB-001,2025-01,Mario R.,Google Review,2,La migrazione ha causato la perdita di alcuni dati storici. Il recupero ha richiesto 3 settimane.
+FB-002,2025-01,Giulia T.,Ticket supporto,4,Finalmente hanno aggiunto l'export in Excel! Era l'unica funzionalita che mancava. Ora sono soddisfatto.
+FB-003,2025-02,Alessandro P.,Survey NPS,5,Il software gestionale ha semplificato enormemente il nostro lavoro. Lo consiglio a tutte le PMI.
+FB-004,2025-02,Francesca B.,Telefono,2,Interfaccia confusa e poco intuitiva. Ho dovuto chiamare l'assistenza solo per configurare le email.
+FB-005,2025-03,Roberto M.,Trustpilot,2,Seconda volta che segnalo lo stesso bug sul modulo fatture. A quanto pare non leggono i ticket.
+FB-006,2025-03,Chiara L.,Ticket supporto,4,"Ottimo rapporto qualita-prezzo. L'unica pecca e la documentazione, che potrebbe essere piu completa."
+FB-007,2025-04,Davide S.,Telefono,2,Ho avuto problemi con la fatturazione per tre mesi consecutivi. Ogni volta devo chiamare per correggere.
+FB-008,2025-04,Elena C.,Email,3,"Tempi di risposta dell'assistenza accettabili durante la settimana, molto lenti nel weekend."
+FB-009,2025-05,Stefano V.,Ticket supporto,1,"Contratto firmato a maggio, installazione completata a settembre. 4 mesi per un software cloud sono troppi."
+FB-010,2025-05,Valentina G.,Email,3,Il corso era informativo ma troppo teorico. Avrei preferito piu esercitazioni pratiche.
+FB-011,2025-06,Andrea N.,Telefono,5,Assistenza premium impeccabile. Ogni volta che chiamo risolvono subito. Vale ogni centesimo.
+FB-012,2025-06,Sara D.,LinkedIn,5,"Servizio eccellente, il team di assistenza ha risolto il problema in meno di un'ora. Molto soddisfatto."
+FB-013,2025-07,Michele F.,Telefono,1,Corso annullato 2 giorni prima senza alternativa proposta. Pessima organizzazione.
+FB-014,2025-07,Claudia Z.,Survey NPS,2,Prezzo aumentato del 30% al rinnovo senza preavviso adeguato. Sto valutando alternative.
+FB-015,2025-08,Simone A.,LinkedIn,3,Il webinar gratuito era interessante ma troppo breve. 30 minuti non bastano per un argomento cosi complesso.
+FB-016,2025-08,Paola I.,Trustpilot,1,Tempi di attesa dell'assistenza superiori a 40 minuti. Per un servizio premium e vergognoso.
+FB-017,2025-09,Matteo O.,LinkedIn,3,"Funzionalita ok, ma l'app mobile e ancora molto limitata. Spero in aggiornamenti presto."
+FB-018,2025-09,Silvia U.,Trustpilot,5,La formazione ricevuta e stata eccezionale. Il docente era preparato e disponibile. Torneremo sicuramente.
+FB-019,2025-10,Lorenzo E.,Ticket supporto,3,Prodotto nella media. Fa quello che deve fare ma niente di eccezionale. Aspetto la prossima versione.
+FB-020,2025-10,Martina Q.,Ticket supporto,4,L'integrazione con il nostro ERP ha funzionato al primo tentativo. Complimenti al team tecnico.
+FB-021,2025-11,Giorgio H.,Ticket supporto,4,Buon prodotto nel complesso. L'interfaccia potrebbe essere piu intuitiva ma le funzionalita sono ottime.
+FB-022,2025-11,Federica K.,Trustpilot,4,Migrazione al cloud gestita perfettamente. Un piccolo ritardo sulla timeline ma risultato ottimo.
+FB-023,2025-12,Tommaso J.,Telefono,5,Ho convinto il mio responsabile a comprare il pacchetto enterprise dopo il trial. Il ROI si e visto subito.
+FB-024,2025-12,Beatrice W.,LinkedIn,1,"Il software si e bloccato durante la chiusura trimestrale, perdendo 2 ore di lavoro. Inaccettabile."
+FB-025,2025-12,Filippo X.,Survey NPS,4,Buon supporto tecnico e team competente. Peccato che gli aggiornamenti siano troppo frequenti e rompano cose che funzionavano.
+FB-026,2025-01,Mario R.,Survey NPS,3,"Il prodotto in se e buono, ma il processo di onboarding e stato caotico. Servono guide migliori."

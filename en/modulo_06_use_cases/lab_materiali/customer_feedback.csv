@@ -1,0 +1,27 @@
+ID,Date,Customer,Channel,Rating,Feedback
+FB-001,2025-01,Mario R.,Google Review,2,The migration caused the loss of some historical data. Recovery took 3 weeks.
+FB-002,2025-01,Giulia T.,Support Ticket,4,They finally added Excel export! It was the only feature that was missing. Now I'm satisfied.
+FB-003,2025-02,Alessandro P.,Survey NPS,5,The management software has greatly simplified our work. I recommend it to all SMEs.
+FB-004,2025-02,Francesca B.,Phone,2,Confusing and unintuitive interface. I had to call support just to configure the emails.
+FB-005,2025-03,Roberto M.,Trustpilot,2,Second time I've reported the same bug in the invoicing module. Apparently they don't read the tickets.
+FB-006,2025-03,Chiara L.,Support Ticket,4,"Great value for money. The only downside is the documentation, which could be more comprehensive."
+FB-007,2025-04,Davide S.,Phone,2,I've had billing issues for three consecutive months. Every time I have to call to get it corrected.
+FB-008,2025-04,Elena C.,Email,3,"Support response times are acceptable during the week, very slow on weekends."
+FB-009,2025-05,Stefano V.,Support Ticket,1,"Contract signed in May, installation completed in September. 4 months for a cloud software is too long."
+FB-010,2025-05,Valentina G.,Email,3,The course was informative but too theoretical. I would have preferred more hands-on exercises.
+FB-011,2025-06,Andrea N.,Phone,5,Premium support is flawless. Every time I call they resolve the issue immediately. Worth every penny.
+FB-012,2025-06,Sara D.,LinkedIn,5,"Excellent service, the support team resolved the issue in less than an hour. Very satisfied."
+FB-013,2025-07,Michele F.,Phone,1,Course cancelled 2 days before with no alternative offered. Terrible organization.
+FB-014,2025-07,Claudia Z.,Survey NPS,2,Price increased by 30% at renewal without adequate notice. I'm evaluating alternatives.
+FB-015,2025-08,Simone A.,LinkedIn,3,The free webinar was interesting but too short. 30 minutes is not enough for such a complex topic.
+FB-016,2025-08,Paola I.,Trustpilot,1,Support wait times exceeding 40 minutes. For a premium service this is unacceptable.
+FB-017,2025-09,Matteo O.,LinkedIn,3,"Features are okay, but the mobile app is still very limited. I hope for updates soon."
+FB-018,2025-09,Silvia U.,Trustpilot,5,The training we received was outstanding. The instructor was knowledgeable and helpful. We'll definitely be back.
+FB-019,2025-10,Lorenzo E.,Support Ticket,3,Average product. It does what it's supposed to do but nothing exceptional. Waiting for the next version.
+FB-020,2025-10,Martina Q.,Support Ticket,4,The integration with our ERP worked on the first try. Compliments to the technical team.
+FB-021,2025-11,Giorgio H.,Support Ticket,4,Good product overall. The interface could be more intuitive but the features are excellent.
+FB-022,2025-11,Federica K.,Trustpilot,4,Cloud migration handled perfectly. A slight delay on the timeline but excellent result.
+FB-023,2025-12,Tommaso J.,Phone,5,I convinced my manager to buy the enterprise package after the trial. The ROI was immediate.
+FB-024,2025-12,Beatrice W.,LinkedIn,1,"The software crashed during the quarterly closing, losing 2 hours of work. Unacceptable."
+FB-025,2025-12,Filippo X.,Survey NPS,4,Good technical support and competent team. Too bad the updates are too frequent and break things that were working.
+FB-026,2025-01,Mario R.,Survey NPS,3,"The product itself is good, but the onboarding process was chaotic. Better guides are needed."

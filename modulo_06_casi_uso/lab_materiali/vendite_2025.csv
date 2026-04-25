@@ -1,0 +1,145 @@
+Mese,Mese_Num,Prodotto,Regione,Venditore,Quantita,Prezzo_Unitario,Fatturato,Costo,Margine
+Gennaio,1,Software Gestionale,Nord,Laura Rossi,19,1143.0,21717.02,8795.52,12921.5
+Gennaio,1,Software Gestionale,Centro,Luca Ferrari,9,1152.3,10370.69,5165.99,5204.7
+Gennaio,1,Software Gestionale,Sud,Laura Rossi,6,1190.63,7143.78,2542.9,4600.88
+Gennaio,1,Licenza Cloud,Nord,Luca Ferrari,21,808.16,16971.39,7845.01,9126.38
+Gennaio,1,Licenza Cloud,Centro,Marco Bianchi,13,795.94,10347.18,4197.21,6149.97
+Gennaio,1,Licenza Cloud,Sud,Giuseppe Verdi,10,772.77,7727.73,3357.88,4369.85
+Gennaio,1,Assistenza Premium,Nord,Marco Bianchi,10,2614.3,26143.03,10909.98,15233.05
+Gennaio,1,Assistenza Premium,Centro,Giuseppe Verdi,6,2464.74,14788.47,6193.28,8595.19
+Gennaio,1,Assistenza Premium,Sud,Anna Marino,5,2557.43,12787.16,5846.87,6940.29
+Gennaio,1,Formazione,Nord,Giuseppe Verdi,6,587.59,3525.54,1677.2,1848.34
+Gennaio,1,Formazione,Centro,Laura Rossi,4,612.27,2449.1,879.63,1569.47
+Gennaio,1,Formazione,Sud,Marco Bianchi,3,629.11,1887.34,983.42,903.92
+Febbraio,2,Software Gestionale,Nord,Laura Rossi,17,1194.41,20304.96,10494.05,9810.91
+Febbraio,2,Software Gestionale,Centro,Marco Bianchi,10,1165.14,11651.41,4700.13,6951.28
+Febbraio,2,Software Gestionale,Sud,Laura Rossi,7,1160.54,8123.76,4027.97,4095.79
+Febbraio,2,Licenza Cloud,Nord,Luca Ferrari,25,781.6,19539.9,10455.38,9084.52
+Febbraio,2,Licenza Cloud,Centro,Marco Bianchi,13,785.94,10217.25,5146.05,5071.2
+Febbraio,2,Licenza Cloud,Sud,Giuseppe Verdi,9,762.57,6863.11,2835.09,4028.02
+Febbraio,2,Assistenza Premium,Nord,Giuseppe Verdi,10,2603.28,26032.84,12064.56,13968.28
+Febbraio,2,Assistenza Premium,Centro,Anna Marino,6,2499.81,14998.85,7903.44,7095.41
+Febbraio,2,Assistenza Premium,Sud,Luca Ferrari,4,2409.91,9639.63,4810.15,4829.48
+Febbraio,2,Formazione,Nord,Anna Marino,7,605.08,4235.53,2242.99,1992.54
+Febbraio,2,Formazione,Centro,Anna Marino,4,629.84,2519.36,951.48,1567.88
+Febbraio,2,Formazione,Sud,Laura Rossi,2,572.83,1145.65,426.1,719.55
+Marzo,3,Software Gestionale,Nord,Anna Marino,26,1190.66,30957.14,11228.33,19728.81
+Marzo,3,Software Gestionale,Centro,Luca Ferrari,14,1196.17,16746.32,6703.26,10043.06
+Marzo,3,Software Gestionale,Sud,Luca Ferrari,10,1141.38,11413.78,5640.06,5773.72
+Marzo,3,Licenza Cloud,Nord,Giuseppe Verdi,37,821.49,30395.05,12706.2,17688.85
+Marzo,3,Licenza Cloud,Centro,Giuseppe Verdi,19,796.3,15129.66,8181.56,6948.1
+Marzo,3,Licenza Cloud,Sud,Marco Bianchi,16,820.96,13135.31,5931.07,7204.24
+Marzo,3,Assistenza Premium,Nord,Luca Ferrari,17,2449.61,41643.39,19896.79,21746.6
+Marzo,3,Assistenza Premium,Centro,Luca Ferrari,8,2468.48,19747.83,7549.79,12198.04
+Marzo,3,Assistenza Premium,Sud,Marco Bianchi,7,2524.74,17673.15,7912.64,9760.51
+Marzo,3,Formazione,Nord,Giuseppe Verdi,11,622.72,6849.96,3536.86,3313.1
+Marzo,3,Formazione,Centro,Marco Bianchi,5,584.45,2922.26,1354.38,1567.88
+Marzo,3,Formazione,Sud,Luca Ferrari,3,599.16,1797.48,654.0,1143.48
+Aprile,4,Software Gestionale,Nord,Luca Ferrari,27,1155.41,31195.99,13883.98,17312.01
+Aprile,4,Software Gestionale,Centro,Laura Rossi,12,1203.32,14439.85,6805.77,7634.08
+Aprile,4,Software Gestionale,Sud,Giuseppe Verdi,11,1230.63,13536.95,6605.67,6931.28
+Aprile,4,Licenza Cloud,Nord,Luca Ferrari,34,813.73,27666.99,11749.73,15917.26
+Aprile,4,Licenza Cloud,Centro,Marco Bianchi,21,779.83,16376.48,5941.47,10435.01
+Aprile,4,Licenza Cloud,Sud,Marco Bianchi,14,778.41,10897.73,4294.18,6603.55
+Aprile,4,Assistenza Premium,Nord,Marco Bianchi,16,2389.72,38235.5,13897.84,24337.66
+Aprile,4,Assistenza Premium,Centro,Anna Marino,10,2392.71,23927.14,9513.45,14413.69
+Aprile,4,Assistenza Premium,Sud,Luca Ferrari,5,2408.08,12040.39,6466.93,5573.46
+Aprile,4,Formazione,Nord,Anna Marino,9,584.58,5261.22,2339.11,2922.11
+Aprile,4,Formazione,Centro,Anna Marino,4,575.82,2303.26,1004.71,1298.55
+Aprile,4,Formazione,Sud,Marco Bianchi,3,621.83,1865.49,673.13,1192.36
+Maggio,5,Software Gestionale,Nord,Marco Bianchi,20,1227.39,24547.71,12522.24,12025.47
+Maggio,5,Software Gestionale,Centro,Anna Marino,13,1162.83,15116.73,6647.17,8469.56
+Maggio,5,Software Gestionale,Sud,Marco Bianchi,8,1195.52,9564.12,5020.18,4543.94
+Maggio,5,Licenza Cloud,Nord,Marco Bianchi,37,828.91,30669.59,14110.01,16559.58
+Maggio,5,Licenza Cloud,Centro,Marco Bianchi,24,803.25,19277.93,6804.18,12473.75
+Maggio,5,Licenza Cloud,Sud,Anna Marino,17,827.9,14074.23,5394.12,8680.11
+Maggio,5,Assistenza Premium,Nord,Laura Rossi,15,2591.16,38867.44,20618.73,18248.71
+Maggio,5,Assistenza Premium,Centro,Anna Marino,8,2621.33,20970.62,8452.01,12518.61
+Maggio,5,Assistenza Premium,Sud,Luca Ferrari,5,2549.15,12745.74,6323.18,6422.56
+Maggio,5,Formazione,Nord,Laura Rossi,9,599.2,5392.8,2092.3,3300.5
+Maggio,5,Formazione,Centro,Giuseppe Verdi,6,604.75,3628.5,1663.45,1965.05
+Maggio,5,Formazione,Sud,Luca Ferrari,3,605.05,1815.15,817.85,997.3
+Giugno,6,Software Gestionale,Nord,Laura Rossi,15,1255.29,18829.4,6891.98,11937.42
+Giugno,6,Software Gestionale,Centro,Anna Marino,9,1148.16,10333.4,5397.79,4935.61
+Giugno,6,Software Gestionale,Sud,Luca Ferrari,6,1246.83,7481.01,2986.74,4494.27
+Giugno,6,Licenza Cloud,Nord,Luca Ferrari,22,766.56,16864.29,8119.73,8744.56
+Giugno,6,Licenza Cloud,Centro,Giuseppe Verdi,17,834.78,14191.2,5546.66,8644.54
+Giugno,6,Licenza Cloud,Sud,Giuseppe Verdi,10,791.66,7916.63,3834.33,4082.3
+Giugno,6,Assistenza Premium,Nord,Marco Bianchi,10,2607.25,26072.55,14004.79,12067.76
+Giugno,6,Assistenza Premium,Centro,Marco Bianchi,6,2624.61,15747.68,8648.93,7098.75
+Giugno,6,Assistenza Premium,Sud,Giuseppe Verdi,4,2501.47,10005.88,3767.13,6238.75
+Giugno,6,Formazione,Nord,Laura Rossi,7,622.76,4359.29,1847.93,2511.36
+Giugno,6,Formazione,Centro,Luca Ferrari,3,602.59,1807.78,742.1,1065.68
+Giugno,6,Formazione,Sud,Marco Bianchi,2,619.03,1238.05,507.45,730.6
+Luglio,7,Software Gestionale,Nord,Marco Bianchi,22,1156.11,25434.53,9489.26,15945.27
+Luglio,7,Software Gestionale,Centro,Laura Rossi,12,1158.65,13903.84,5649.84,8254.0
+Luglio,7,Software Gestionale,Sud,Giuseppe Verdi,8,1164.43,9315.45,4442.05,4873.4
+Luglio,7,Licenza Cloud,Nord,Marco Bianchi,29,780.09,22622.6,12026.89,10595.71
+Luglio,7,Licenza Cloud,Centro,Marco Bianchi,14,793.89,11114.4,4505.07,6609.33
+Luglio,7,Licenza Cloud,Sud,Laura Rossi,11,770.47,8475.12,4627.07,3848.05
+Luglio,7,Assistenza Premium,Nord,Marco Bianchi,12,2512.92,30155.04,13133.65,17021.39
+Luglio,7,Assistenza Premium,Centro,Laura Rossi,5,2611.26,13056.31,6374.14,6682.17
+Luglio,7,Assistenza Premium,Sud,Laura Rossi,4,2583.65,10334.6,4821.11,5513.49
+Luglio,7,Formazione,Nord,Marco Bianchi,6,572.51,3435.06,1452.79,1982.27
+Luglio,7,Formazione,Centro,Marco Bianchi,4,582.6,2330.42,931.95,1398.47
+Luglio,7,Formazione,Sud,Luca Ferrari,2,603.59,1207.19,633.71,573.48
+Agosto,8,Software Gestionale,Nord,Laura Rossi,30,1251.09,37532.75,14913.54,22619.21
+Agosto,8,Software Gestionale,Centro,Marco Bianchi,19,1237.29,23508.56,12372.16,11136.4
+Agosto,8,Software Gestionale,Sud,Anna Marino,2,1250.94,2501.88,1267.15,1234.73
+Agosto,8,Licenza Cloud,Nord,Giuseppe Verdi,50,829.13,41456.26,21231.82,20224.44
+Agosto,8,Licenza Cloud,Centro,Marco Bianchi,23,816.1,18770.35,8005.71,10764.64
+Agosto,8,Licenza Cloud,Sud,Anna Marino,20,777.79,15555.89,7985.11,7570.78
+Agosto,8,Assistenza Premium,Nord,Laura Rossi,15,2580.13,38702.01,20290.09,18411.92
+Agosto,8,Assistenza Premium,Centro,Marco Bianchi,7,2423.28,16962.98,7050.7,9912.28
+Agosto,8,Assistenza Premium,Sud,Anna Marino,7,2444.78,17113.47,8185.31,8928.16
+Agosto,8,Formazione,Nord,Marco Bianchi,9,620.62,5585.58,2324.89,3260.69
+Agosto,8,Formazione,Centro,Giuseppe Verdi,4,628.22,2512.9,969.26,1543.64
+Agosto,8,Formazione,Sud,Giuseppe Verdi,2,605.79,1211.59,507.82,703.77
+Settembre,9,Software Gestionale,Nord,Luca Ferrari,27,1258.11,33968.92,12674.79,21294.13
+Settembre,9,Software Gestionale,Centro,Luca Ferrari,14,1145.33,16034.57,7010.5,9024.07
+Settembre,9,Software Gestionale,Sud,Laura Rossi,13,1204.61,15659.99,7734.25,7925.74
+Settembre,9,Licenza Cloud,Nord,Giuseppe Verdi,45,765.6,34451.91,16635.02,17816.89
+Settembre,9,Licenza Cloud,Centro,Giuseppe Verdi,30,813.07,24392.13,9145.22,15246.91
+Settembre,9,Licenza Cloud,Sud,Giuseppe Verdi,19,813.35,15453.68,6416.93,9036.75
+Settembre,9,Assistenza Premium,Nord,Anna Marino,16,2422.96,38767.36,18724.09,20043.27
+Settembre,9,Assistenza Premium,Centro,Giuseppe Verdi,10,2600.7,26007.01,12303.99,13703.02
+Settembre,9,Assistenza Premium,Sud,Laura Rossi,6,2583.43,15500.59,6367.25,9133.34
+Settembre,9,Formazione,Nord,Anna Marino,8,604.8,4838.39,2326.98,2511.41
+Settembre,9,Formazione,Centro,Laura Rossi,4,610.54,2442.15,1104.43,1337.72
+Settembre,9,Formazione,Sud,Luca Ferrari,3,587.03,1761.08,850.2,910.88
+Ottobre,10,Software Gestionale,Nord,Giuseppe Verdi,27,1238.21,33431.69,16723.45,16708.24
+Ottobre,10,Software Gestionale,Centro,Laura Rossi,15,1163.9,17458.43,6195.74,11262.69
+Ottobre,10,Software Gestionale,Sud,Anna Marino,14,1213.35,16986.94,8556.29,8430.65
+Ottobre,10,Licenza Cloud,Nord,Anna Marino,48,810.38,38898.3,15127.05,23771.25
+Ottobre,10,Licenza Cloud,Centro,Marco Bianchi,30,779.52,23385.56,11253.4,12132.16
+Ottobre,10,Licenza Cloud,Sud,Anna Marino,23,828.84,19063.21,10048.09,9015.12
+Ottobre,10,Assistenza Premium,Nord,Anna Marino,14,2576.03,36064.38,17642.06,18422.32
+Ottobre,10,Assistenza Premium,Centro,Anna Marino,8,2437.3,19498.4,10132.68,9365.72
+Ottobre,10,Assistenza Premium,Sud,Luca Ferrari,5,2491.16,12455.8,5682.66,6773.14
+Ottobre,10,Formazione,Nord,Luca Ferrari,8,627.0,5016.02,2649.89,2366.13
+Ottobre,10,Formazione,Centro,Luca Ferrari,5,623.52,3117.61,1357.25,1760.36
+Ottobre,10,Formazione,Sud,Anna Marino,3,579.55,1738.65,908.1,830.55
+Novembre,11,Software Gestionale,Nord,Luca Ferrari,34,1169.67,39768.74,18990.86,20777.88
+Novembre,11,Software Gestionale,Centro,Giuseppe Verdi,22,1168.71,25711.61,11261.03,14450.58
+Novembre,11,Software Gestionale,Sud,Marco Bianchi,13,1180.3,15343.92,8110.88,7233.04
+Novembre,11,Licenza Cloud,Nord,Laura Rossi,57,778.5,44374.55,21689.83,22684.72
+Novembre,11,Licenza Cloud,Centro,Anna Marino,33,792.61,26156.06,11993.13,14162.93
+Novembre,11,Licenza Cloud,Sud,Luca Ferrari,22,826.63,18185.89,7781.66,10404.23
+Novembre,11,Assistenza Premium,Nord,Luca Ferrari,24,2379.88,57117.19,30051.14,27066.05
+Novembre,11,Assistenza Premium,Centro,Anna Marino,11,2376.47,26141.21,10988.5,15152.71
+Novembre,11,Assistenza Premium,Sud,Luca Ferrari,9,2613.36,23520.22,10203.17,13317.05
+Novembre,11,Formazione,Nord,Giuseppe Verdi,11,623.87,6862.56,3072.0,3790.56
+Novembre,11,Formazione,Centro,Anna Marino,5,571.74,2858.71,1192.73,1665.98
+Novembre,11,Formazione,Sud,Luca Ferrari,4,620.43,2481.72,1325.01,1156.71
+Dicembre,12,Software Gestionale,Nord,Marco Bianchi,39,1248.83,48704.43,22812.11,25892.32
+Dicembre,12,Software Gestionale,Centro,Laura Rossi,19,1191.43,22637.24,11847.66,10789.58
+Dicembre,12,Software Gestionale,Sud,Giuseppe Verdi,12,1185.49,14225.91,5581.28,8644.63
+Dicembre,12,Licenza Cloud,Nord,Anna Marino,66,830.37,54804.5,22231.52,32572.98
+Dicembre,12,Licenza Cloud,Centro,Luca Ferrari,38,766.55,29128.99,10308.07,18820.92
+Dicembre,12,Licenza Cloud,Sud,Marco Bianchi,23,836.15,19231.53,7593.46,11638.07
+Dicembre,12,Assistenza Premium,Nord,Laura Rossi,23,2537.94,58372.59,29235.72,29136.87
+Dicembre,12,Assistenza Premium,Centro,Laura Rossi,11,2380.1,26181.05,9961.27,16219.78
+Dicembre,12,Assistenza Premium,Sud,Anna Marino,8,2403.6,19228.78,10374.92,8853.86
+Dicembre,12,Formazione,Nord,Luca Ferrari,10,616.01,6160.14,2362.77,3797.37
+Dicembre,12,Formazione,Centro,Laura Rossi,7,613.1,4291.71,2169.71,2122.0
+Dicembre,12,Formazione,Sud,Giuseppe Verdi,4,576.49,2305.94,818.92,1487.02

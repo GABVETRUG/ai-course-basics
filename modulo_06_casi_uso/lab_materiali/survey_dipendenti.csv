@@ -1,0 +1,61 @@
+ID,Reparto,Anzianita,Soddisfazione_Generale,Work_Life_Balance,Crescita_Professionale,Rapporto_Colleghi,Rapporto_Management,Strumenti_Lavoro,Consiglierebbe_Azienda,Commento
+SRV-001,Sviluppo,< 1 anno,3,4,4,4,4,3,No,Vorrei piu chiarezza sugli obiettivi aziendali.
+SRV-002,Sviluppo,5-10 anni,3,4,3,5,4,3,Si,
+SRV-003,Sviluppo,< 1 anno,3,4,3,4,3,4,No,"Ottimo ambiente di lavoro, colleghi disponibili."
+SRV-004,Commerciale,3-5 anni,2,4,2,4,2,3,No,
+SRV-005,Marketing,3-5 anni,4,3,2,3,2,2,Forse,Il management ascolta poco le nostre proposte.
+SRV-006,Sviluppo,1-3 anni,4,3,3,5,3,4,Si,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-007,Sviluppo,3-5 anni,3,3,3,4,4,3,Si,
+SRV-008,Commerciale,< 1 anno,3,3,2,3,1,4,No,"Mi piace il lavoro da remoto, spero continui."
+SRV-009,Commerciale,5-10 anni,3,3,3,3,3,4,Si,Gli strumenti di lavoro sono obsoleti.
+SRV-010,Commerciale,> 10 anni,4,4,3,3,3,3,No,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-011,Supporto,5-10 anni,2,3,2,4,3,1,No,L'azienda sta crescendo e si sente l'energia positiva.
+SRV-012,Commerciale,1-3 anni,2,3,1,4,3,3,Si,Gli strumenti di lavoro sono obsoleti.
+SRV-013,Marketing,3-5 anni,4,3,3,5,4,3,Si,Apprezzo la flessibilita sugli orari.
+SRV-014,Commerciale,> 10 anni,2,2,2,3,1,3,Forse,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-015,Amministrazione,< 1 anno,3,3,2,3,2,2,Forse,"Troppo carico di lavoro, servirebbero piu assunzioni."
+SRV-016,Amministrazione,3-5 anni,3,2,1,4,3,3,Si,L'azienda sta crescendo e si sente l'energia positiva.
+SRV-017,Supporto,< 1 anno,3,2,2,3,1,3,Forse,
+SRV-018,Commerciale,5-10 anni,3,3,3,5,2,3,Si,La comunicazione tra reparti e un problema serio.
+SRV-019,Supporto,< 1 anno,2,2,1,4,2,2,Si,
+SRV-020,Amministrazione,5-10 anni,1,3,3,4,2,1,Si,
+SRV-021,Sviluppo,3-5 anni,3,4,2,5,3,3,Si,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-022,Supporto,< 1 anno,2,2,3,4,2,1,No,
+SRV-023,Marketing,> 10 anni,4,3,3,4,3,2,Si,
+SRV-024,Sviluppo,< 1 anno,3,4,3,5,3,4,Si,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-025,Supporto,> 10 anni,4,3,1,3,1,2,Forse,Non sono chiare le possibilita di promozione.
+SRV-026,Marketing,1-3 anni,5,3,2,5,3,3,No,La comunicazione tra reparti e un problema serio.
+SRV-027,Amministrazione,1-3 anni,3,2,2,4,3,3,No,"Mi piace il lavoro da remoto, spero continui."
+SRV-028,Supporto,5-10 anni,1,2,3,4,1,3,No,Vorrei piu chiarezza sugli obiettivi aziendali.
+SRV-029,Supporto,5-10 anni,3,3,3,4,1,2,Forse,
+SRV-030,Commerciale,> 10 anni,2,4,4,5,3,3,Si,"Mi piace il lavoro da remoto, spero continui."
+SRV-031,Amministrazione,1-3 anni,3,4,1,4,2,2,Si,Gli strumenti di lavoro sono obsoleti.
+SRV-032,Supporto,5-10 anni,2,3,1,2,3,2,No,
+SRV-033,Supporto,1-3 anni,1,3,2,3,3,2,No,
+SRV-034,Sviluppo,< 1 anno,3,3,3,5,3,3,Si,Buone opportunita di crescita professionale.
+SRV-035,Amministrazione,5-10 anni,2,3,2,3,3,1,No,L'azienda sta crescendo e si sente l'energia positiva.
+SRV-036,Commerciale,> 10 anni,4,4,4,5,3,4,Si,Gli strumenti di lavoro sono obsoleti.
+SRV-037,Supporto,3-5 anni,1,2,1,4,3,3,No,"Mi piace il lavoro da remoto, spero continui."
+SRV-038,Commerciale,3-5 anni,4,2,2,3,4,2,No,Il management ascolta poco le nostre proposte.
+SRV-039,Sviluppo,1-3 anni,4,5,3,4,2,2,No,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-040,Marketing,< 1 anno,3,2,4,3,3,3,No,
+SRV-041,Marketing,< 1 anno,4,2,3,4,3,3,Forse,La comunicazione tra reparti e un problema serio.
+SRV-042,Marketing,< 1 anno,4,3,3,5,2,3,Si,Non sono chiare le possibilita di promozione.
+SRV-043,Marketing,5-10 anni,2,2,1,5,2,2,Forse,Lo stipendio non e competitivo rispetto al mercato.
+SRV-044,Amministrazione,5-10 anni,2,4,3,4,3,3,No,"Mi piace il lavoro da remoto, spero continui."
+SRV-045,Amministrazione,> 10 anni,3,4,1,3,2,4,Si,"Mi piace il lavoro da remoto, spero continui."
+SRV-046,Marketing,> 10 anni,5,4,1,3,4,4,No,La formazione interna potrebbe essere migliorata.
+SRV-047,Sviluppo,> 10 anni,5,3,3,5,4,3,Forse,Buone opportunita di crescita professionale.
+SRV-048,Supporto,1-3 anni,3,2,3,4,2,1,No,Lo stipendio non e competitivo rispetto al mercato.
+SRV-049,Supporto,3-5 anni,3,2,3,2,1,3,No,"Ottimo ambiente di lavoro, colleghi disponibili."
+SRV-050,Sviluppo,3-5 anni,2,4,3,5,3,4,Forse,"Mi piace il lavoro da remoto, spero continui."
+SRV-051,Amministrazione,> 10 anni,2,3,3,5,3,2,Si,"Troppo carico di lavoro, servirebbero piu assunzioni."
+SRV-052,Amministrazione,5-10 anni,3,2,3,3,3,2,Si,La formazione interna potrebbe essere migliorata.
+SRV-053,Sviluppo,3-5 anni,4,4,4,4,3,3,Forse,Apprezzo la flessibilita sugli orari.
+SRV-054,Commerciale,< 1 anno,4,4,3,4,2,3,Si,Apprezzo la flessibilita sugli orari.
+SRV-055,Marketing,5-10 anni,3,4,2,4,2,4,No,La formazione interna potrebbe essere migliorata.
+SRV-056,Commerciale,< 1 anno,2,2,3,5,3,3,Forse,
+SRV-057,Marketing,< 1 anno,3,4,4,4,4,2,Si,Troppi meeting inutili che tolgono tempo al lavoro vero.
+SRV-058,Marketing,< 1 anno,4,3,3,3,2,4,Si,"Mi piace il lavoro da remoto, spero continui."
+SRV-059,Marketing,> 10 anni,2,3,3,5,3,3,Forse,"Ottimo ambiente di lavoro, colleghi disponibili."
+SRV-060,Supporto,3-5 anni,1,2,3,4,1,1,No,La comunicazione tra reparti e un problema serio.
