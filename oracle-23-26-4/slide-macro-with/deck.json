@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-26T18:45:00Z"},
+  "lists": "css",
+  "title": "Macro SQL e clausola WITH",
+  "order": ["cover", "divieto", "funzionava", "tabella", "scalare", "pipeline", "corpo", "inline", "riepilogo"],
+  "sections": {
+    "s1": {"description": "Il limite fino alla 23.26.3 e i casi che funzionavano già", "start": "cover"},
+    "s2": {"description": "Le macro dentro la WITH con la 23.26.4", "start": "tabella"},
+    "s3": {"description": "Casi collegati e riepilogo", "start": "corpo"}
+  },
+  "faces": {
+    "archivo": {"family": "Archivo", "href": "https://fonts.googleapis.com/css2?family=Archivo:wght@600..800&display=swap"},
+    "ibm-plex-sans": {"family": "IBM Plex Sans", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"},
+    "ibm-plex-mono": {"family": "IBM Plex Mono", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}

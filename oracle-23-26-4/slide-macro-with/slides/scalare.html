@@ -1,0 +1,33 @@
+<section id="scalare" data-transition="fade" style="background:#F3F5F7;color:#16212B;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0A6B7A">Con la 23.26.4</p>
+<h2 style="font-family:'Archivo', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.1;color:#16212B">Anche le macro scalari entrano nella CTE</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:1000px;display:flex;flex-direction:column;gap:24px">
+<div style="background:#0F1A22;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#8DA0AD">In giallo la novità</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#D8E3EB;white-space:nowrap"><span style="color:#7CC3E0">with</span> nomi_z <span style="color:#7CC3E0">as</span> (<br>&#160;&#160;<span style="color:#7CC3E0">select</span> <span style="color:#F2C14E">formatted_name(first_name, last_name)</span> nome<br>&#160;&#160;<span style="color:#7CC3E0">from</span>&#160;&#160;&#160;hr.employees<br>&#160;&#160;<span style="color:#7CC3E0">where</span>&#160;&#160;<span style="color:#F2C14E">contains_z(last_name)</span><br>)<br><span style="color:#7CC3E0">select</span> * <span style="color:#7CC3E0">from</span> nomi_z <span style="color:#7CC3E0">order by</span> nome;</p>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#46545F">formatted_name e contains_z sono le macro scalari della slide Oracle.</p>
+<div style="background:#E3E9ED;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#566573">Nel piano la macro scompare</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#16212B;white-space:nowrap">filter(("LAST_NAME" LIKE '%z%' COLLATE "BINARY_CI")=TRUE)</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:row"><p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;color:#7F5200;background:#F7ECD1;padding:4px 16px;border-radius:24px">Risultato atteso</p></div>
+<table style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#16212B">
+<tr style="background:#DCE4E9"><th style="width:100%;text-align:left">NOME</th></tr>
+<tr><td style="text-align:left">Errazuriz, Alberto</td></tr>
+<tr><td style="text-align:left">Gietz, William</td></tr>
+<tr><td style="text-align:left">Martinez, Michael</td></tr>
+<tr><td style="text-align:left">Ozer, Lisa</td></tr>
+<tr><td style="text-align:left">Venzl, Timothy</td></tr>
+<tr><td style="text-align:left">Zlotkey, Eleni</td></tr>
+</table>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#566573">Risultato calcolato su 23.26.3 con le stesse macro in una inline view · piano d’esecuzione eseguito su 23.26.3</p>
+<aside>Stesso discorso per le macro scalari: su 23.26.3 questa CTE dava ORA-64630, con la 23.26.4 è ammessa. contains_z ha il corpo tra parentesi: è una condizione che diventa un’espressione booleana, quindi si usa direttamente nella WHERE. Il riquadro chiaro mostra il predicato del piano d’esecuzione eseguito su 23.26.3: la macro è stata sostituita dal suo testo, non c’è nessuna chiamata di funzione. L’ottimizzatore lavora sull’espressione vera, senza passaggi tra SQL e PL/SQL a ogni riga.</aside>
+</section>

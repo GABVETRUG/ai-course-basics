@@ -1,0 +1,25 @@
+<section id="pipeline" data-transition="fade" style="background:#F3F5F7;color:#16212B;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0A6B7A">Con la 23.26.4</p>
+<h2 style="font-family:'Archivo', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.1;color:#16212B">La query della slide, riscritta a passi</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="width:1000px;background:#0F1A22;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#8DA0AD">Ogni passo ha un nome</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#D8E3EB;white-space:nowrap"><span style="color:#7CC3E0">with</span> primi_reparti <span style="color:#7CC3E0">as</span> (<br><span style="color:#F2C14E">&#160;&#160;select * from get_3_rows(hr.departments)</span><br>),<br>assunti_dal_2015 <span style="color:#7CC3E0">as</span> (<br><span style="color:#F2C14E">&#160;&#160;select * from dept_totals(date '2015-01-01')</span><br>)<br><span style="color:#7CC3E0">select</span> department_id, department_name, emp#<br><span style="color:#7CC3E0">from</span>&#160;&#160;&#160;primi_reparti<br><span style="color:#7CC3E0">left</span>&#160;&#160;&#160;<span style="color:#7CC3E0">join</span> assunti_dal_2015 <span style="color:#7CC3E0">using</span> (department_id)<br><span style="color:#7CC3E0">order</span>&#160;&#160;<span style="color:#7CC3E0">by</span> department_id;</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:row"><p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;color:#7F5200;background:#F7ECD1;padding:4px 16px;border-radius:24px">Risultato atteso</p></div>
+<table style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#16212B">
+<tr style="background:#DCE4E9"><th style="width:36%;text-align:right">DEPARTMENT_ID</th><th style="width:44%;text-align:left">DEPARTMENT_NAME</th><th style="width:20%;text-align:right">EMP#</th></tr>
+<tr><td style="text-align:right">10</td><td style="text-align:left">Administration</td><td style="text-align:right">&lt;null&gt;</td></tr>
+<tr><td style="text-align:right">20</td><td style="text-align:left">Marketing</td><td style="text-align:right">1</td></tr>
+<tr><td style="text-align:right">30</td><td style="text-align:left">Purchasing</td><td style="text-align:right">4</td></tr>
+</table>
+<p style="font-size:28px;line-height:1.4;color:#46545F">È la join della slide Oracle tra get_3_rows e dept_totals, con i passi dichiarati nella WITH.</p>
+<p style="font-size:28px;line-height:1.4;color:#46545F">Senza ORDER BY in get_3_rows i tre reparti possono cambiare.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#566573">Risultato calcolato su 23.26.3 con le due macro in inline view · la stessa query con la WITH dava ORA-64630</p>
+<aside>La query della slide Oracle su CREATE MACRO metteva in join get_3_rows(hr.departments) e dept_totals(date '2015-01-01'). Con la 23.26.4 ogni macro può diventare un passo con un nome nella WITH, e la query finale si legge come una frase. Il risultato è stato calcolato su 23.26.3 con le due macro in inline view e ORDER BY department_id: coincide con quello della slide (reparti 10, 20 e 30). get_3_rows non ha ORDER BY: restituisce tre righe qualsiasi, quindi in un altro database i reparti possono essere diversi.</aside>
+</section>

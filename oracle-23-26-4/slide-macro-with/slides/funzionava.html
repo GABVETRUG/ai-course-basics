@@ -1,0 +1,40 @@
+<section id="funzionava" data-transition="fade" style="background:#E8EEF1;color:#16212B;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#0A6B7A">Fino alla 23.26.3</p>
+<h2 style="font-family:'Archivo', Arial, sans-serif;font-size:56px;font-weight:700;line-height:1.1;color:#16212B">Il divieto era solo dentro la CTE</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:row;gap:40px;align-items:center">
+<div style="width:600px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Archivo', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#16212B">Macro fuori dalla CTE</h3>
+<p style="font-size:28px;line-height:1.4;color:#46545F">La WITH c’è, la macro è fuori</p>
+<div style="display:flex;flex-direction:row"><p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;color:#1C6A40;background:#DBEFE2;padding:4px 16px;border-radius:24px">OK su 23.26.3</p></div>
+</div>
+<div style="flex:1;background:#0F1A22;border-radius:16px;padding:28px 32px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#D8E3EB;white-space:nowrap"><span style="color:#7CC3E0">with</span> reparti <span style="color:#7CC3E0">as</span> (<span style="color:#7CC3E0">select</span> department_id, department_name<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="color:#7CC3E0">from</span> hr.departments <span style="color:#7CC3E0">where</span> department_id &lt;= <span style="color:#C7A8F2">30</span>)<br><span style="color:#7CC3E0">select</span> * <span style="color:#7CC3E0">from</span> reparti<br><span style="color:#7CC3E0">left join</span> <span style="color:#A9D99A">dept_totals</span>(<span style="color:#7CC3E0">date</span> <span style="color:#E9C27F">'2015-01-01'</span>) <span style="color:#7CC3E0">using</span> (department_id);</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:center">
+<div style="width:600px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Archivo', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#16212B">CTE come parametro</h3>
+<p style="font-size:28px;line-height:1.4;color:#46545F">Una CTE passata a una macro</p>
+<div style="display:flex;flex-direction:row"><p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;color:#1C6A40;background:#DBEFE2;padding:4px 16px;border-radius:24px">OK su 23.26.3</p></div>
+</div>
+<div style="flex:1;background:#0F1A22;border-radius:16px;padding:28px 32px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#D8E3EB;white-space:nowrap"><span style="color:#7CC3E0">with</span> emp50 <span style="color:#7CC3E0">as</span> (<br>&#160;&#160;<span style="color:#7CC3E0">select</span> employee_id, last_name, salary <span style="color:#7CC3E0">from</span> hr.employees<br>&#160;&#160;<span style="color:#7CC3E0">where</span>&#160;&#160;department_id = <span style="color:#C7A8F2">50</span> <span style="color:#7CC3E0">order by</span> salary <span style="color:#7CC3E0">desc</span>)<br><span style="color:#7CC3E0">select</span> * <span style="color:#7CC3E0">from</span> <span style="color:#A9D99A">top_n</span>(emp50, <span style="color:#C7A8F2">3</span>);</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:center">
+<div style="width:600px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-family:'Archivo', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.2;color:#16212B">Inline view</h3>
+<p style="font-size:28px;line-height:1.4;color:#46545F">Una subquery nella FROM</p>
+<div style="display:flex;flex-direction:row"><p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:600;color:#1C6A40;background:#DBEFE2;padding:4px 16px;border-radius:24px">OK su 23.26.3</p></div>
+</div>
+<div style="flex:1;background:#0F1A22;border-radius:16px;padding:28px 32px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#D8E3EB;white-space:nowrap"><span style="color:#7CC3E0">select</span> * <span style="color:#7CC3E0">from</span> (<br>&#160;&#160;<span style="color:#7CC3E0">select</span> * <span style="color:#7CC3E0">from</span> <span style="color:#A9D99A">dept_totals</span>(<span style="color:#7CC3E0">date</span> <span style="color:#E9C27F">'2017-01-01'</span>)<br>);</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#566573">Eseguito su 23.26.3: le tre query restituiscono righe, senza errori</p>
+<aside>Prima della 23.26.4 molte combinazioni funzionavano già. Una query con una WITH poteva chiamare una macro nella query principale. Una CTE poteva essere passata come tabella a una macro polimorfica: top_n(emp50, 3) restituisce Fripp 8200, Weiss 8000 e Kaufling 7900. Una macro poteva stare in una inline view, cioè in una subquery nella FROM. Il divieto riguardava solo la chiamata della macro nella sottoquery che definisce la CTE. top_n è la macro polimorfica che riceve una tabella e un numero e restituisce le prime n righe.</aside>
+</section>

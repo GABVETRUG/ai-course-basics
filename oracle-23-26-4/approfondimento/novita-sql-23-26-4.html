@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novità SQL Oracle 23.26.4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: una colonna di lettura (testo max 46rem) dentro un contenitore di 62rem, dove codice, tabelle e diagrammi
+   usano tutta la larghezza; indice a chip fisso in alto; ogni novità è una sezione con prima/dopo, esempi, attenzione. */
+:root {
+  --bg: #f1f4f6;
+  --surface: #ffffff;
+  --fg: #16212b;
+  --muted: #566573;
+  --line: #d2dae1;
+  --accent: #0a6b7a;
+  --accent-soft: #d5ecef;
+  --code-bg: #0f1921;
+  --code-fg: #d8e3eb;
+  --code-head: #172630;
+  --code-muted: #8da0ad;
+  --out-bg: #e6ebef;
+  --out-fg: #1b2833;
+  --err: #a1262c;
+  --err-soft: #f6e0df;
+  --ok: #1c6a40;
+  --ok-soft: #dbefe2;
+  --warn: #7f5200;
+  --warn-soft: #f7ecd1;
+  --hl-kw: #7cc3e0;
+  --hl-fn: #a9d99a;
+  --hl-str: #e9c27f;
+  --hl-num: #c7a8f2;
+  --hl-com: #7f929f;
+  --hl-new: #f2c14e;
+  --hl-new-bg: rgba(242, 193, 78, 0.17);
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1319;
+    --surface: #131d25;
+    --fg: #e0e7ed;
+    --muted: #96a5b2;
+    --line: #24323d;
+    --accent: #5bbfcd;
+    --accent-soft: #133037;
+    --code-bg: #091015;
+    --code-fg: #d5e0e9;
+    --code-head: #111c24;
+    --code-muted: #7d909d;
+    --out-bg: #101a21;
+    --out-fg: #d2dde5;
+    --err: #f0918a;
+    --err-soft: #381c1d;
+    --ok: #7ed3a0;
+    --ok-soft: #142d1e;
+    --warn: #e9c478;
+    --warn-soft: #352a11;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1319;
+  --surface: #131d25;
+  --fg: #e0e7ed;
+  --muted: #96a5b2;
+  --line: #24323d;
+  --accent: #5bbfcd;
+  --accent-soft: #133037;
+  --code-bg: #091015;
+  --code-fg: #d5e0e9;
+  --code-head: #111c24;
+  --code-muted: #7d909d;
+  --out-bg: #101a21;
+  --out-fg: #d2dde5;
+  --err: #f0918a;
+  --err-soft: #381c1d;
+  --ok: #7ed3a0;
+  --ok-soft: #142d1e;
+  --warn: #e9c478;
+  --warn-soft: #352a11;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.62 var(--font-body);
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--bg);
+}
+
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+code { font-family: var(--font-mono); font-size: 0.86em; }
+p code, li code, td code, dd code, dt code {
+  background: var(--out-bg);
+  padding: 0.08em 0.32em;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+/* ---- hero */
+.hero-in, .wrap, .toc-in {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.hero-in { padding-block: 2.4rem 1.6rem; display: grid; gap: 0.9rem; }
+.eyebrow {
+  margin: 0;
+  font: 600 0.74rem/1.3 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h1 {
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  font-stretch: 80%;
+  letter-spacing: -0.01em;
+}
+.lead { margin: 0; font-size: 1.12rem; max-width: 44rem; color: var(--fg); }
+.method {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  max-width: 50rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.method p { margin: 0; }
+.method-t { font-weight: 600; }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; font-size: 0.86rem; color: var(--muted); }
+.legend li { display: flex; align-items: center; gap: 0.4rem; }
+
+/* ---- chips */
+.chip {
+  display: inline-block;
+  font: 600 0.68rem/1.5 var(--font-mono);
+  letter-spacing: 0.03em;
+  padding: 0.06rem 0.45rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip.slide { background: var(--accent-soft); color: var(--accent); }
+.chip.run { background: var(--ok-soft); color: var(--ok); }
+.chip.exp { background: var(--warn-soft); color: var(--warn); }
+.chip.new { background: var(--hl-new-bg); color: var(--hl-new); }
+.chip.old { background: rgba(141, 160, 173, 0.16); color: var(--code-muted); }
+mark.nw {
+  background: var(--hl-new-bg);
+  color: inherit;
+  border-bottom: 2px solid var(--hl-new);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+mark.nw.lg { background: var(--warn-soft); color: var(--warn); border-bottom-color: var(--warn); font-size: 0.86rem; padding: 0 0.3rem; }
+
+/* ---- nav */
+.toc {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.toc-in {
+  display: flex;
+  gap: 0.35rem;
+  overflow-x: auto;
+  padding-block: 0.55rem;
+  scrollbar-width: none;
+}
+.toc-in::-webkit-scrollbar { display: none; }
+.toc a {
+  flex: none;
+  font: 600 0.8rem/1 var(--font-mono);
+  color: var(--fg);
+  text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---- sections */
+.wrap { padding-block: 0.5rem 3rem; display: grid; gap: 0; }
+.feat { padding-block: 2.4rem 1rem; border-top: 1px solid var(--line); display: grid; gap: 1rem; min-width: 0; }
+.feat.intro { border-top: 0; padding-top: 1.6rem; }
+.feat > * { min-width: 0; }
+.feat-h { display: grid; gap: 0.45rem; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.08; font-weight: 750; font-stretch: 85%; }
+.kicker { margin: 0; font-size: 1.06rem; max-width: 46rem; }
+h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  font-stretch: 90%;
+  margin-top: 0.9rem;
+  padding-top: 0.2rem;
+}
+h4 { font-size: 1.02rem; font-weight: 650; font-stretch: 95%; margin-top: 0.6rem; }
+.feat p { margin: 0; max-width: 46rem; }
+.aside { color: var(--muted); font-size: 0.92rem; }
+.list { margin: 0; padding-left: 1.15rem; display: grid; gap: 0.45rem; max-width: 46rem; }
+.list li::marker { color: var(--accent); }
+.src li { overflow-wrap: anywhere; }
+
+/* ---- code + output */
+.code, .out { border-radius: 9px; overflow: hidden; min-width: 0; }
+.code { background: var(--code-bg); color: var(--code-fg); }
+.blk-h {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.5rem 0.38rem 0.8rem;
+  font: 600 0.72rem/1.4 var(--font-mono);
+  letter-spacing: 0.03em;
+}
+.code .blk-h { background: var(--code-head); color: var(--code-muted); }
+.blk-t { text-transform: uppercase; }
+.copy {
+  margin-left: auto;
+  font: 600 0.72rem/1 var(--font-mono);
+  color: var(--code-fg);
+  background: transparent;
+  border: 1px solid rgba(141, 160, 173, 0.35);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+.copy:hover { border-color: var(--hl-kw); color: var(--hl-kw); }
+pre {
+  margin: 0;
+  padding: 0.85rem 1rem 0.95rem;
+  overflow-x: auto;
+  font: 400 0.82rem/1.55 var(--font-mono);
+  tab-size: 2;
+}
+pre code { font-size: inherit; }
+pre, code, .dg-code, .dg-num, .dg-hex, .dg-axis { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+.code .k { color: var(--hl-kw); }
+.code .f { color: var(--hl-fn); }
+.code .s { color: var(--hl-str); }
+.code .n { color: var(--hl-num); }
+.code .c { color: var(--hl-com); font-style: italic; }
+.out { background: var(--out-bg); color: var(--out-fg); border: 1px solid var(--line); }
+.out .blk-h { color: var(--muted); border-bottom: 1px solid var(--line); }
+.out.err { background: var(--err-soft); border-color: transparent; }
+.out.err .blk-h { color: var(--err); border-bottom-color: color-mix(in srgb, var(--err) 22%, transparent); }
+.out.err pre { color: var(--fg); }
+
+/* ---- prima / ora */
+.cmp { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; align-items: start; }
+.cmp-col { display: grid; gap: 0.6rem; min-width: 0; }
+.cmp-t { margin: 0; font: 650 0.92rem/1.3 var(--font-display); font-stretch: 90%; display: flex; align-items: center; gap: 0.45rem; }
+.cmp-t::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: none; }
+.cmp-t.old::before { background: var(--muted); }
+.cmp-t.new::before { background: var(--hl-new); }
+
+/* ---- figures */
+.fig { margin: 0; display: grid; gap: 0.5rem; min-width: 0; }
+.fig-scroll {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+.fig.wide .fig-scroll svg { min-width: 640px; }
+.fig svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.fig.wide svg { max-width: none; }
+.scroll-hint { display: none; }
+@media (max-width: 700px) { .fig.wide .scroll-hint { display: inline; font-weight: 600; } }
+figcaption, .figcap { font-size: 0.9rem; color: var(--muted); max-width: 46rem; margin: 0; }
+.fig-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
+
+/* ---- diagram marks (themed through tokens) */
+.dg { color: var(--fg); font-family: var(--font-body); }
+.dg text { fill: currentColor; font-size: 12px; }
+.dg .dg-grid { stroke: var(--line); stroke-width: 1; }
+.dg .dg-axis { fill: var(--muted); font: 500 11px var(--font-mono); }
+.dg .dg-lbl { font-weight: 650; font-size: 13px; }
+.dg .dg-sub { fill: var(--muted); font-size: 11px; }
+.dg .dg-num { font: 600 11px var(--font-mono); fill: var(--fg); }
+.dg .dg-code { font: 600 12px var(--font-mono); fill: var(--fg); }
+.dg .dg-hex { font: 600 13px var(--font-mono); fill: var(--fg); }
+.dg .dg-win { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.2; }
+.dg .dg-empty { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.dg .dg-tail { fill: var(--accent-soft); fill-opacity: 0.45; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 2; }
+.dg .dg-ev { fill: var(--fg); }
+.dg .dg-ev-in { fill: var(--accent); }
+.dg .dg-dim { fill: none; stroke: var(--muted); stroke-width: 1; }
+.dg .dg-ts { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1; }
+.dg .dg-ver { fill: var(--hl-new-bg); stroke: var(--hl-new); stroke-width: 1.5; }
+.dg .dg-var { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.dg .dg-hash { fill: var(--out-bg); stroke: var(--line); stroke-width: 1; }
+.dg .dg-rnd { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+.dg .dg-row { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+.dg .dg-locked { fill: var(--err-soft); stroke: var(--err); stroke-width: 1.2; }
+.dg .dg-taken { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.4; }
+
+/* ---- tables */
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.tbl table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.tbl th, .tbl td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--line); }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl th { font: 650 0.78rem/1.3 var(--font-display); font-stretch: 90%; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); background: var(--bg); }
+.summary table { min-width: 44rem; }
+.summary td:first-child a { text-decoration: none; }
+
+/* ---- warnings */
+.warn {
+  background: var(--warn-soft);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.warn-t { margin: 0; font: 700 0.8rem/1.2 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--warn); }
+.warn .list li::marker { color: var(--warn); }
+
+/* ---- definitions */
+.defs { margin: 0; display: grid; grid-template-columns: minmax(9rem, max-content) 1fr; gap: 0.7rem 1.2rem; max-width: 50rem; }
+.defs dt { font-weight: 600; }
+.defs dd { margin: 0; }
+@media (max-width: 560px) {
+  .defs { grid-template-columns: 1fr; gap: 0.2rem; }
+  .defs dd { margin-bottom: 0.6rem; }
+}
+
+.foot { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); font-size: 0.86rem; color: var(--muted); }
+
+</style>
+<style>body { margin: 0; } [hidden] { display: none !important; }</style>
+</head>
+<body>
+<header class="hero"><div class="hero-in">
+<p class="eyebrow">Oracle AI Database 26ai · Release Update 23.26.4</p>
+<h1>Novità SQL della 23.26.4</h1>
+<p class="lead">Le sei funzionalità presentate da Chris Saxon, una per una: cosa fanno, come si ottenevano prima, esempi
+completi e gli errori da evitare.</p>
+<div class="method">
+<p class="method-t">Come sono stati verificati gli esempi</p>
+<p>Ho installato Oracle AI Database 26ai Free 23.26.3, la release precedente, con lo schema HR ufficiale: lo stesso
+delle slide, con 107 dipendenti assunti tra il 2011 e il 2018. Lì ho eseguito i workaround tradizionali, registrato
+gli errori e ricostruito con SQL classico i risultati delle slide, che coincidono. La 23.26.4 non era disponibile:
+gli output delle nuove funzioni che non compaiono nelle slide sono calcolati con query equivalenti.</p>
+<ul class="legend">
+<li><span class="chip slide">slide 23.26.4</span> output delle slide di Oracle</li>
+<li><span class="chip run">eseguito 23.26.3</span> eseguito sulla release precedente</li>
+<li><span class="chip exp">atteso</span> calcolato con una query equivalente</li>
+<li><mark class="nw lg">evidenziato</mark> sintassi nuova della 23.26.4</li>
+</ul>
+</div>
+</div></header>
+<nav class="toc" aria-label="Sezioni"><div class="toc-in">
+<a href="#select-star">SELECT *</a><a href="#for-update">FOR UPDATE</a><a href="#uuid">UUID</a>
+<a href="#bar-chart">BAR_CHART</a><a href="#macro">MACRO</a><a href="#finestre">Finestre</a>
+<a href="#altro">Altro</a><a href="#fonti">Fonti</a></div></nav>
+<main class="wrap">
+<section class="feat intro"><header class="feat-h"><p class="eyebrow">In sintesi</p><h2>Cosa cambia</h2></header>
+<div class="tbl summary"><table><thead><tr><th>Novità</th><th>A cosa serve</th><th>Fino a 23.26.3</th>
+<th>Con 23.26.4</th></tr></thead><tbody>
+<tr><td><a href="#select-star"><code>SELECT *, espr</code></a></td><td>Aggiungere colonne calcolate a tutte le colonne</td>
+<td>ORA-00923 / ORA-00936: serviva l'alias <code>t.*</code></td><td><code>select rowid, *, upper(x) from t</code></td></tr>
+<tr><td><a href="#for-update"><code>FETCH FIRST … FOR UPDATE</code></a></td><td>Prelevare i prossimi N record liberi da una coda</td>
+<td>ORA-02014; con ROWNUM arrivano meno righe del richiesto</td><td>Una query; le righe bloccate non contano nel limite</td></tr>
+<tr><td><a href="#uuid"><code>UUID(7)</code>, <code>UUID(5, …)</code></a></td><td>Chiavi ordinate nel tempo o riproducibili</td>
+<td>Solo v4 casuale; <code>uuid(7)</code> dà ORA-62433</td><td>v7 ordinata al millisecondo, v5 deterministica</td></tr>
+<tr><td><a href="#bar-chart"><code>BAR_CHART</code></a></td><td>Vedere una distribuzione senza uscire dal SQL</td>
+<td><code>RPAD</code> scritto a mano</td><td><code>bar_chart(val, max, min, larghezza, simbolo)</code></td></tr>
+<tr><td><a href="#macro"><code>CREATE MACRO</code></a></td><td>Viste con parametri ed espressioni riutilizzabili</td>
+<td>Funzione PL/SQL <code>SQL_MACRO</code> che restituisce una stringa</td><td>SQL scritto direttamente; usabile anche nella <code>WITH</code></td></tr>
+<tr><td><a href="#finestre"><code>TUMBLE</code> <code>HOP</code> <code>CUMULATE</code> <code>SESSIONS</code></a></td><td>Raggruppare righe in finestre di tempo</td>
+<td><code>TIME_BUCKET</code>, generatori di righe, <code>LAG</code> + somma progressiva</td><td>Una funzione nella <code>FROM</code> aggiunge <code>WINDOW_START</code> e <code>WINDOW_END</code></td></tr>
+</tbody></table></div></section>
+<section id="select-star" class="feat"><header class="feat-h"><p class="eyebrow">SELECT *, &lt;espressione&gt;</p><h2>SELECT * insieme ad altre colonne</h2><p class="kicker">L'asterisco senza prefisso ora si può mescolare con colonne, espressioni e pseudocolonne, in qualsiasi posizione della lista. Prima bisognava dare un alias alla tabella e scrivere <code>t.*</code>.</p></header><div class="cmp"><div class="cmp-col"><p class="cmp-t old">Fino a 23.26.3</p><div class="out err"><div class="blk-h"><span class="blk-t">Asterisco non qualificato</span><span class="chip run">eseguito 23.26.3</span></div><pre>select rowid, upper(region_name) upper_name, *
+from   hr.regions;
+ORA-00936: missing expression
+
+select *, upper(region_name)
+from   hr.regions;
+ORA-00923: FROM keyword not found where expected</pre></div><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- unica strada: alias e asterisco qualificato</span>
+<span class="k">select</span> <span class="f">rowid</span>, <span class="f">upper</span>(region_name) upper_name, r.*
+<span class="k">from</span>   hr.regions r;</code></pre></div></div><div class="cmp-col"><p class="cmp-t new">Con 23.26.4</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <span class="f">rowid</span>, <span class="f">upper</span> ( region_name ) upper_name, <mark class="nw">*</mark>
+<span class="k">from</span>   hr.regions;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>ROWID              UPPER_NAME                 REGION_ID REGION_NAME
+------------------ ------------------------- ---------- -------------------------
+AAASjQAABAAAIb8AAA EUROPE                             1 Europe
+AAASjQAABAAAIb8AAB AMERICAS                           2 Americas
+AAASjQAABAAAIb8AAC ASIA                               3 Asia
+AAASjQAABAAAIb8AAD MIDDLE EAST AND AFRICA             4 Middle East and Africa</pre></div></div></div><p>L'asterisco viene espanso nel punto in cui lo scrivi: prima le espressioni alla sua sinistra, poi le colonne della tabella nel loro ordine, poi quelle a destra. Secondo la documentazione può stare ovunque nella lista, anche più di una volta, e continua a escludere pseudocolonne e colonne <code>INVISIBLE</code>.</p><p><span class="aside">Nello schema HR pubblicato oggi su GitHub le regioni sono cinque, con ID da 10 a 50: la slide usa una versione precedente della tabella.</span></p><h3>Esempi</h3><h4>Funzioni analitiche accanto a tutte le colonne</h4><p>È lo schema classico del top-N per gruppo e della deduplica. Con <code>QUALIFY</code>, già disponibile prima della 23.26.4, il filtro sul numero di riga sta nella stessa query.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- i due stipendi più alti dei reparti 20 e 30</span>
+<span class="k">select</span> <mark class="nw">*,</mark> <span class="f">row_number</span>() <span class="k">over</span> (<span class="k">partition</span> <span class="k">by</span> department_id <span class="k">order</span> <span class="k">by</span> salary <span class="k">desc</span>) rn
+<span class="k">from</span>   hr.employees
+<span class="k">where</span>  department_id <span class="k">in</span> (<span class="n">20</span>, <span class="n">30</span>)
+<span class="k">qualify</span> rn &lt;= <span class="n">2</span>
+<span class="k">order</span>  <span class="k">by</span> department_id, rn;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (con e.* su 23.26.3)</span><span class="chip run">eseguito 23.26.3</span></div><pre>EMPLOYEE_ID FIRST_NAME LAST_NAME EMAIL    PHONE_NUMBER   HIRE_DATE JOB_ID   SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID RN
+----------- ---------- --------- -------- -------------- --------- -------- ------ -------------- ---------- ------------- --
+        201 Michael    Martinez  MMARTINE 1.515.555.0166 17-FEB-14 MK_MAN    13000                       100            20  1
+        202 Pat        Davis     PDAVIS   1.603.555.0167 17-AUG-15 MK_REP     6000                       201            20  2
+        114 Den        Li        DLI      1.515.555.0114 07-DEC-12 PU_MAN    11000                       100            30  1
+        115 Alexander  Khoo      AKHOO    1.515.555.0115 18-MAY-13 PU_CLERK   3100                       114            30  2</pre></div><h4>Una pagina di risultati con il totale</h4><p>Le funzioni analitiche vengono calcolate prima di <code>FETCH FIRST</code>: ogni riga della pagina riporta il numero totale di righe (19 job), senza una seconda query per contarle.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <mark class="nw">*,</mark> <span class="f">count</span>(*) <span class="k">over</span> () totale_righe
+<span class="k">from</span>   hr.jobs
+<span class="k">order</span>  <span class="k">by</span> job_id
+<span class="k">fetch</span>  <span class="k">first</span> <span class="n">3</span> <span class="k">rows</span> <span class="k">only</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (con j.* su 23.26.3)</span><span class="chip run">eseguito 23.26.3</span></div><pre>JOB_ID     JOB_TITLE                MIN_SALARY MAX_SALARY TOTALE_RIGHE
+---------- ------------------------ ---------- ---------- ------------
+AC_ACCOUNT Public Accountant              4200       9000           19
+AC_MGR     Accounting Manager             8200      16000           19
+AD_ASST    Administration Assistant       3000       6000           19</pre></div><h4>Copia o archivio con una colonna in più</h4><p>Le colonne di <code>*</code> arrivano nell'ordine della tabella: la colonna aggiunta va in coda, nella stessa posizione che ha nella tabella di destinazione.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">table</span> emp_snapshot <span class="k">as</span>
+  <span class="k">select</span> <mark class="nw">*,</mark> <span class="f">sysdate</span> <span class="k">as</span> snapshot_at
+  <span class="k">from</span>   hr.employees;
+
+<span class="k">insert</span> <span class="k">into</span> emp_snapshot
+  <span class="k">select</span> <mark class="nw">*,</mark> <span class="f">sysdate</span>
+  <span class="k">from</span>   hr.employees
+  <span class="k">where</span>  department_id = <span class="n">50</span>;</code></pre></div><h4>Colonne invisibili e pseudocolonne</h4><p><code>*</code> non restituisce le colonne <code>INVISIBLE</code> (12c) né le pseudocolonne. Ora le aggiungi senza riscrivere l'elenco delle colonne.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">table</span> clienti (
+  id    <span class="k">number</span>,
+  nome  <span class="k">varchar2</span>(<span class="n">30</span>),
+  nota  <span class="k">varchar2</span>(<span class="n">30</span>) <span class="k">invisible</span>
+);
+
+<span class="c">-- ID, NOME</span>
+<span class="k">select</span> * <span class="k">from</span> clienti;
+<span class="c">-- ID, NOME, NOTA</span>
+<span class="k">select</span> <mark class="nw">*,</mark> nota <span class="k">from</span> clienti;
+<span class="c">-- SCN dell'ultima modifica e indirizzo fisico della riga</span>
+<span class="k">select</span> <span class="f">ora_rowscn</span>, <span class="f">rowid</span>, <mark class="nw">*</mark> <span class="k">from</span> clienti;</code></pre></div><h4>Join</h4><p>In una join <code>*</code> restituisce le colonne di tutte le tabelle. Con <code>USING</code> la colonna di join compare una volta sola, in testa; <code>MANAGER_ID</code> esiste in entrambe le tabelle e compare due volte.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <mark class="nw">*,</mark> e.salary * <span class="n">12</span> stipendio_annuo
+<span class="k">from</span>   hr.employees e
+<span class="k">join</span>   hr.departments d <span class="k">using</span> (department_id)
+<span class="k">where</span>  employee_id = <span class="n">101</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>DEPARTMENT_ID EMPLOYEE_ID FIRST_NAME LAST_NAME EMAIL  PHONE_NUMBER   HIRE_DATE JOB_ID SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_NAME MANAGER_ID LOCATION_ID STIPENDIO_ANNUO
+------------- ----------- ---------- --------- ------ -------------- --------- ------ ------ -------------- ---------- --------------- ---------- ----------- ---------------
+           90         101 Neena      Yang      NYANG  1.515.555.0101 21-SEP-15 AD_VP   17000                       100 Executive              100        1700          204000</pre></div><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Nomi duplicati.</strong> Una query di primo livello li accetta. Una subquery che usa la colonna duplicata fallisce con ORA-00918, una <code>CREATE TABLE … AS SELECT</code> o una vista con ORA-00957.</li><li><strong>Codice di produzione.</strong> Con <code>*</code> l'elenco delle colonne dipende dalla tabella: se la tabella cambia, cambia il risultato. Ottimo per query esplorative, debug e script; nelle viste e nel codice applicativo conviene elencare le colonne.</li></ul></div><div class="out err"><div class="blk-h"><span class="blk-t">Nomi duplicati (stesse regole con *)</span><span class="chip run">eseguito 23.26.3</span></div><pre>select salary from (select e.*, salary * 12 salary from hr.employees e);
+ORA-00918: SALARY: column ambiguously specified
+
+create table emp_copy as select e.*, salary * 12 salary from hr.employees e;
+ORA-00957: duplicate column name</pre></div></section><section id="for-update" class="feat"><header class="feat-h"><p class="eyebrow">FETCH FIRST … FOR UPDATE [SKIP LOCKED]</p><h2>Top-N con FOR UPDATE e SKIP LOCKED</h2><p class="kicker">Una query top-N ora può bloccare le righe che restituisce. Con <code>SKIP LOCKED</code> le righe già bloccate da altre transazioni vengono saltate e non contano nel limite: la query continua finché trova N righe libere.</p></header><div class="fig-pair"><figure class="fig"><div class="fig-scroll"><svg class="dg" viewBox="0 0 362 292" role="img" aria-label="Con ROWNUM la riga bloccata occupa uno dei tre posti"><text class="dg-code" x="8" y="20">WHERE ROWNUM <= 3</text><text class="dg-code" x="8" y="38">FOR UPDATE SKIP LOCKED</text><text class="dg-sub" x="354" y="20" text-anchor="end">fino a 23.26.3</text><rect class="dg-locked" x="104" y="64" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="81.5" text-anchor="middle">100</text><text class="dg-sub" x="204" y="81.5">bloccata da S1, saltata</text><rect class="dg-taken" x="104" y="98" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="115.5" text-anchor="middle">101</text><text class="dg-sub" x="204" y="115.5">bloccata da S2</text><rect class="dg-taken" x="104" y="132" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="149.5" text-anchor="middle">102</text><text class="dg-sub" x="204" y="149.5">bloccata da S2</text><rect class="dg-row" x="104" y="166" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="183.5" text-anchor="middle">103</text><rect class="dg-row" x="104" y="200" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="217.5" text-anchor="middle">104</text><rect class="dg-row" x="104" y="234" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="251.5" text-anchor="middle">105</text><path class="dg-dim" d="M98 64 H92 V158 H98"/><text class="dg-sub" x="88" y="115.0" text-anchor="end">3 candidati</text><text class="dg-lbl" x="8" y="284">2 righe: 101, 102</text></svg></div></figure><figure class="fig"><div class="fig-scroll"><svg class="dg" viewBox="0 0 362 292" role="img" aria-label="Con FETCH FIRST la riga bloccata non conta nel limite"><text class="dg-code" x="8" y="20">FETCH FIRST 3 ROWS ONLY</text><text class="dg-code" x="8" y="38">FOR UPDATE SKIP LOCKED</text><text class="dg-sub" x="354" y="20" text-anchor="end">23.26.4</text><rect class="dg-locked" x="104" y="64" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="81.5" text-anchor="middle">100</text><text class="dg-sub" x="204" y="81.5">bloccata da S1, non conta</text><rect class="dg-taken" x="104" y="98" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="115.5" text-anchor="middle">101</text><text class="dg-sub" x="204" y="115.5">bloccata da S2</text><rect class="dg-taken" x="104" y="132" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="149.5" text-anchor="middle">102</text><text class="dg-sub" x="204" y="149.5">bloccata da S2</text><rect class="dg-taken" x="104" y="166" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="183.5" text-anchor="middle">103</text><text class="dg-sub" x="204" y="183.5">bloccata da S2</text><rect class="dg-row" x="104" y="200" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="217.5" text-anchor="middle">104</text><rect class="dg-row" x="104" y="234" width="92" height="26" rx="3"/><text class="dg-hex" x="150.0" y="251.5" text-anchor="middle">105</text><path class="dg-dim" d="M98 98 H92 V192 H98"/><text class="dg-sub" x="88" y="149.0" text-anchor="end">3 righe libere</text><text class="dg-lbl" x="8" y="284">3 righe: 101, 102, 103</text></svg></div></figure></div><p class="figcap">La sessione 1 tiene bloccato il dipendente 100. La sessione 2 chiede tre righe: con <code>ROWNUM</code> la riga bloccata occupa uno dei tre posti e ne arrivano due; con <code>FETCH FIRST</code> non conta e ne arrivano tre.</p><h3>L'esempio della slide</h3><div class="cmp"><div class="cmp-col"><p class="cmp-t old">Sessione 1</p><div class="code"><div class="blk-h"><span class="blk-t">Sessione 1</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- sessione 1: blocca il dipendente 100, senza commit</span>
+<span class="k">update</span> hr.employees
+<span class="k">set</span>    hire_date = <span class="f">sysdate</span>
+<span class="k">where</span>  employee_id = <span class="n">100</span>;</code></pre></div></div><div class="cmp-col"><p class="cmp-t new">Sessione 2</p><div class="code"><div class="blk-h"><span class="blk-t">Sessione 2</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- sessione 2: blocca i primi 3 ID liberi</span>
+<span class="k">select</span> employee_id
+<span class="k">from</span>   hr.employees
+<span class="k">order</span>  <span class="k">by</span> employee_id
+<mark class="nw"><span class="k">fetch</span>  <span class="k">first</span> <span class="n">3</span> <span class="k">rows</span> <span class="k">only</span></mark>
+<mark class="nw"><span class="k">for</span>    <span class="k">update</span> <span class="k">skip</span> <span class="k">locked</span></mark>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>EMPLOYEE_ID
+-----------
+        101 -- ID bypassed
+        102
+        103</pre></div></div></div><h3>Prima della 23.26.4</h3><p>La combinazione era vietata. <code>FETCH FIRST</code> viene riscritto come vista interna (lo mostra <code>DBMS_UTILITY.EXPAND_SQL_TEXT</code>) e <code>FOR UPDATE</code> su una vista di quel tipo non era ammesso.</p><div class="out err"><div class="blk-h"><span class="blk-t">Errore</span><span class="chip run">eseguito 23.26.3</span></div><pre>select employee_id from hr.employees
+order by employee_id fetch first 3 rows only
+for update skip locked;
+ORA-02014: cannot select FOR UPDATE from view with DISTINCT, GROUP BY, etc.</pre></div><div class="out"><div class="blk-h"><span class="blk-t">EXPAND_SQL_TEXT (riformattato)</span><span class="chip run">eseguito 23.26.3</span></div><pre>SELECT "A1"."EMPLOYEE_ID" "EMPLOYEE_ID"
+FROM  (SELECT "A2"."EMPLOYEE_ID" "EMPLOYEE_ID"
+       FROM "HR"."EMPLOYEES" "A2"
+       ORDER BY "A2"."EMPLOYEE_ID") "A1"
+WHERE ROWNUM&lt;=3</pre></div><p>I due workaround più diffusi danno meno righe del richiesto, sempre con la sessione 1 che blocca il 100:</p><div class="cmp"><div class="cmp-col"><p class="cmp-t old">ROWNUM: conta il 100 e poi lo salta</p><div class="code"><div class="blk-h"><span class="blk-t">ROWNUM</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> employee_id <span class="k">from</span> hr.employees
+<span class="k">where</span>  <span class="f">rownum</span> &lt;= <span class="n">3</span>
+<span class="k">for</span> <span class="k">update</span> <span class="k">skip</span> <span class="k">locked</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>EMPLOYEE_ID
+-----------
+        101
+        102</pre></div></div><div class="cmp-col"><p class="cmp-t new">Subquery: sceglie 100, 101, 102 ignorando i lock</p><div class="code"><div class="blk-h"><span class="blk-t">Subquery</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> employee_id <span class="k">from</span> hr.employees
+<span class="k">where</span>  employee_id <span class="k">in</span> (<span class="k">select</span> employee_id
+                       <span class="k">from</span>   hr.employees
+                       <span class="k">order</span>  <span class="k">by</span> employee_id
+                       <span class="k">fetch</span>  <span class="k">first</span> <span class="n">3</span> <span class="k">rows</span> <span class="k">only</span>)
+<span class="k">for</span> <span class="k">update</span> <span class="k">skip</span> <span class="k">locked</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>EMPLOYEE_ID
+-----------
+        101
+        102</pre></div></div></div><p>La soluzione corretta richiedeva PL/SQL: un cursore <code>FOR UPDATE SKIP LOCKED</code> letto con <code>BULK COLLECT … LIMIT</code>. Funziona perché con <code>SKIP LOCKED</code> le righe vengono bloccate al momento del <code>FETCH</code>. L'ho verificato con una funzione in transazione autonoma che tenta <code>SELECT … FOR UPDATE NOWAIT</code>: dopo il fetch sono bloccate solo 101, 102 e 103. Senza <code>SKIP LOCKED</code>, invece, un cursore <code>FOR UPDATE</code> blocca tutte le righe già all'<code>OPEN</code>.</p><div class="code"><div class="blk-h"><span class="blk-t">Workaround corretto</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">declare</span>
+  <span class="k">cursor</span> c <span class="k">is</span>
+    <span class="k">select</span> employee_id <span class="k">from</span> hr.employees
+    <span class="k">order</span>  <span class="k">by</span> employee_id
+    <span class="k">for</span>    <span class="k">update</span> <span class="k">skip</span> <span class="k">locked</span>;
+  <span class="k">type</span> t_ids <span class="k">is</span> <span class="k">table</span> <span class="k">of</span> hr.employees.employee_id%<span class="k">type</span>;
+  l_ids t_ids;
+<span class="k">begin</span>
+  <span class="k">open</span> c;
+  <span class="k">fetch</span> c <span class="k">bulk</span> <span class="k">collect</span> <span class="k">into</span> l_ids <span class="k">limit</span> <span class="n">3</span>;
+  <span class="c">-- elaborazione di l_ids ...</span>
+  <span class="k">close</span> c;
+  <span class="k">commit</span>;
+<span class="k">end</span>;
+/</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Verifica dei lock</span><span class="chip run">eseguito 23.26.3</span></div><pre>preso: 101
+preso: 102
+preso: 103
+101 -&gt; BLOCCATA | 103 -&gt; BLOCCATA | 104 -&gt; libera | 150 -&gt; libera
+
+-- cursore FOR UPDATE senza SKIP LOCKED, subito dopo l'OPEN:
+104 -&gt; BLOCCATA | 110 -&gt; BLOCCATA</pre></div><h3>Esempio completo: una coda di lavori</h3><p>Il caso d'uso tipico: più processi prelevano lavori dalla stessa tabella senza aspettarsi a vicenda e senza prendere due volte lo stesso lavoro.</p><div class="code"><div class="blk-h"><span class="blk-t">Tabella</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">table</span> jobs (
+  job_id     <span class="k">number</span> <span class="k">generated</span> <span class="k">always</span> <span class="k">as</span> <span class="k">identity</span> <span class="k">primary</span> <span class="k">key</span>,
+  payload    <span class="k">varchar2</span>(<span class="n">100</span>) <span class="k">not</span> <span class="k">null</span>,
+  stato      <span class="k">varchar2</span>(<span class="n">10</span>) <span class="k">default</span> <span class="s">'NUOVO'</span> <span class="k">not</span> <span class="k">null</span>,
+  creato_il  <span class="k">timestamp</span> <span class="k">default</span> <span class="f">systimestamp</span> <span class="k">not</span> <span class="k">null</span>,
+  preso_da   <span class="k">varchar2</span>(<span class="n">30</span>),
+  finito_il  <span class="k">timestamp</span>
+);
+<span class="k">create</span> <span class="k">index</span> jobs_coda_ix <span class="k">on</span> jobs (stato, creato_il);
+
+<span class="k">insert</span> <span class="k">into</span> jobs (payload)
+<span class="k">select</span> <span class="s">'job '</span> || <span class="k">level</span> <span class="k">connect</span> <span class="k">by</span> <span class="k">level</span> &lt;= <span class="n">20</span>;
+<span class="k">commit</span>;</code></pre></div><div class="code"><div class="blk-h"><span class="blk-t">Worker</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">declare</span>
+  <span class="k">cursor</span> c_lotto <span class="k">is</span>
+    <span class="k">select</span> job_id, payload
+    <span class="k">from</span>   jobs
+    <span class="k">where</span>  stato = <span class="s">'NUOVO'</span>
+    <span class="k">order</span>  <span class="k">by</span> creato_il, job_id
+    <mark class="nw"><span class="k">fetch</span>  <span class="k">first</span> <span class="n">5</span> <span class="k">rows</span> <span class="k">only</span></mark>
+    <mark class="nw"><span class="k">for</span>    <span class="k">update</span> <span class="k">skip</span> <span class="k">locked</span></mark>;
+<span class="k">begin</span>
+  <span class="k">for</span> j <span class="k">in</span> c_lotto <span class="k">loop</span>
+    <span class="c">-- elaborazione di j.payload ...</span>
+    <span class="k">update</span> jobs
+    <span class="k">set</span>    stato     = <span class="s">'FATTO'</span>,
+           preso_da  = <span class="f">sys_context</span>(<span class="s">'userenv'</span>, <span class="s">'sid'</span>),
+           finito_il = <span class="f">systimestamp</span>
+    <span class="k">where</span>  job_id = j.job_id;
+  <span class="k">end</span> <span class="k">loop</span>;
+  <span class="c">-- il COMMIT chiude il lotto e rilascia i lock</span>
+  <span class="k">commit</span>;
+<span class="k">end</span>;
+/</code></pre></div><p>Due worker avviati insieme dovrebbero ricevere lotti diversi (1–5 e 6–10): è il comportamento descritto dalla documentazione, non l'ho potuto eseguire senza la 23.26.4.</p><h3>Le quattro varianti di FOR UPDATE</h3><div class="tbl"><table><thead><tr><th>Clausola</th><th>Se una riga è bloccata da un altro</th></tr></thead><tbody><tr><td><code>for update</code></td><td>Aspetta che si liberi. Ordine rispettato, nessun salto.</td></tr><tr><td><code>for update nowait</code></td><td>Errore immediato ORA-00054.</td></tr><tr><td><code>for update wait 5</code></td><td>Aspetta fino a 5 secondi, poi errore.</td></tr><tr><td><code>for update skip locked</code></td><td>Salta la riga. Con <code>FETCH FIRST</code> la riga saltata non conta nel limite.</td></tr></tbody></table></div><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Senza ORDER BY</strong> le prime N righe sono righe qualsiasi.</li><li><strong>SKIP LOCKED rinuncia all'ordine rigoroso:</strong> un worker può finire il job 6 prima che un altro finisca il 5. Per una coda va bene, per elaborazioni strettamente sequenziali no.</li><li><strong>Indice.</strong> Serve un indice che porti subito alle righe da prelevare (qui <code>stato, creato_il</code>); senza, ogni worker legge tutta la tabella.</li><li><strong>Transazioni brevi.</strong> I lock restano fino a <code>COMMIT</code> o <code>ROLLBACK</code>.</li><li><strong>Row limiting partizionato.</strong> La documentazione garantisce che le righe bloccate non contano nel limite per il row limiting non partizionato, cioè <code>FETCH FIRST</code> senza <code>PARTITION BY</code>.</li></ul></div></section><section id="uuid" class="feat"><header class="feat-h"><p class="eyebrow">UUID ( 7 ) · UUID ( 5, namespace, nome )</p><h2>UUID versione 7 e versione 5</h2><p class="kicker"><code>UUID()</code> esiste dalla 23.9 e genera UUID casuali, versione 4, come <code>RAW(16)</code>. Ora genera anche la versione 7, che comincia con un timestamp ed è quindi ordinata nel tempo, e la versione 5, ricavata in modo deterministico da un namespace e da un nome.</p></header><figure class="fig wide"><div class="fig-scroll"><svg class="dg" viewBox="0 0 750 310" role="img" aria-label="I 128 bit di un UUID v4, v5 e v7: nella v7 i primi 12 caratteri esadecimali sono il timestamp in millisecondi"><text class="dg-sub" x="328.0" y="14" text-anchor="middle">versione</text><line class="dg-dim" x1="328.0" y1="19" x2="328.0" y2="42"/><text class="dg-sub" x="424.0" y="30" text-anchor="start">variante RFC (8, 9, A o B)</text><line class="dg-dim" x1="418.0" y1="34" x2="418.0" y2="42"/><text class="dg-lbl" x="6" y="63">v4</text><rect class="dg-rnd" x="58" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="67.0" y="63" text-anchor="middle">9</text><rect class="dg-rnd" x="78" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="87.0" y="63" text-anchor="middle">0</text><rect class="dg-rnd" x="98" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="107.0" y="63" text-anchor="middle">C</text><rect class="dg-rnd" x="118" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="127.0" y="63" text-anchor="middle">0</text><rect class="dg-rnd" x="138" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="147.0" y="63" text-anchor="middle">3</text><rect class="dg-rnd" x="158" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="167.0" y="63" text-anchor="middle">C</text><rect class="dg-rnd" x="178" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="187.0" y="63" text-anchor="middle">4</text><rect class="dg-rnd" x="198" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="207.0" y="63" text-anchor="middle">3</text><rect class="dg-rnd" x="228" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="237.0" y="63" text-anchor="middle">8</text><rect class="dg-rnd" x="248" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="257.0" y="63" text-anchor="middle">C</text><rect class="dg-rnd" x="268" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="277.0" y="63" text-anchor="middle">C</text><rect class="dg-rnd" x="288" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="297.0" y="63" text-anchor="middle">0</text><rect class="dg-ver" x="318" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="327.0" y="63" text-anchor="middle">4</text><rect class="dg-rnd" x="338" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="347.0" y="63" text-anchor="middle">F</text><rect class="dg-rnd" x="358" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="367.0" y="63" text-anchor="middle">F</text><rect class="dg-rnd" x="378" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="387.0" y="63" text-anchor="middle">2</text><rect class="dg-var" x="408" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="417.0" y="63" text-anchor="middle">A</text><rect class="dg-rnd" x="428" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="437.0" y="63" text-anchor="middle">A</text><rect class="dg-rnd" x="448" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="457.0" y="63" text-anchor="middle">F</text><rect class="dg-rnd" x="468" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="477.0" y="63" text-anchor="middle">A</text><rect class="dg-rnd" x="498" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="507.0" y="63" text-anchor="middle">9</text><rect class="dg-rnd" x="518" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="527.0" y="63" text-anchor="middle">5</text><rect class="dg-rnd" x="538" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="547.0" y="63" text-anchor="middle">C</text><rect class="dg-rnd" x="558" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="567.0" y="63" text-anchor="middle">7</text><rect class="dg-rnd" x="578" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="587.0" y="63" text-anchor="middle">B</text><rect class="dg-rnd" x="598" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="607.0" y="63" text-anchor="middle">5</text><rect class="dg-rnd" x="618" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="627.0" y="63" text-anchor="middle">0</text><rect class="dg-rnd" x="638" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="647.0" y="63" text-anchor="middle">4</text><rect class="dg-rnd" x="658" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="667.0" y="63" text-anchor="middle">5</text><rect class="dg-rnd" x="678" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="687.0" y="63" text-anchor="middle">D</text><rect class="dg-rnd" x="698" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="707.0" y="63" text-anchor="middle">1</text><rect class="dg-rnd" x="718" y="44" width="18" height="28" rx="2"/><text class="dg-hex" x="727.0" y="63" text-anchor="middle">0</text><text class="dg-sub" x="222.0" y="63" text-anchor="middle">-</text><text class="dg-sub" x="312.0" y="63" text-anchor="middle">-</text><text class="dg-sub" x="402.0" y="63" text-anchor="middle">-</text><text class="dg-sub" x="492.0" y="63" text-anchor="middle">-</text><path class="dg-dim" d="M58 78 V84 H736 V78"/><text class="dg-sub" x="397.0" y="100" text-anchor="middle">tutti gli altri bit sono casuali (122)</text><text class="dg-lbl" x="6" y="155">v5</text><rect class="dg-hash" x="58" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="67.0" y="155" text-anchor="middle">7</text><rect class="dg-hash" x="78" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="87.0" y="155" text-anchor="middle">A</text><rect class="dg-hash" x="98" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="107.0" y="155" text-anchor="middle">6</text><rect class="dg-hash" x="118" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="127.0" y="155" text-anchor="middle">F</text><rect class="dg-hash" x="138" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="147.0" y="155" text-anchor="middle">A</text><rect class="dg-hash" x="158" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="167.0" y="155" text-anchor="middle">B</text><rect class="dg-hash" x="178" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="187.0" y="155" text-anchor="middle">4</text><rect class="dg-hash" x="198" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="207.0" y="155" text-anchor="middle">A</text><rect class="dg-hash" x="228" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="237.0" y="155" text-anchor="middle">A</text><rect class="dg-hash" x="248" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="257.0" y="155" text-anchor="middle">D</text><rect class="dg-hash" x="268" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="277.0" y="155" text-anchor="middle">8</text><rect class="dg-hash" x="288" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="297.0" y="155" text-anchor="middle">D</text><rect class="dg-ver" x="318" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="327.0" y="155" text-anchor="middle">5</text><rect class="dg-hash" x="338" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="347.0" y="155" text-anchor="middle">8</text><rect class="dg-hash" x="358" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="367.0" y="155" text-anchor="middle">0</text><rect class="dg-hash" x="378" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="387.0" y="155" text-anchor="middle">D</text><rect class="dg-var" x="408" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="417.0" y="155" text-anchor="middle">B</text><rect class="dg-hash" x="428" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="437.0" y="155" text-anchor="middle">9</text><rect class="dg-hash" x="448" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="457.0" y="155" text-anchor="middle">4</text><rect class="dg-hash" x="468" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="477.0" y="155" text-anchor="middle">D</text><rect class="dg-hash" x="498" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="507.0" y="155" text-anchor="middle">C</text><rect class="dg-hash" x="518" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="527.0" y="155" text-anchor="middle">9</text><rect class="dg-hash" x="538" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="547.0" y="155" text-anchor="middle">6</text><rect class="dg-hash" x="558" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="567.0" y="155" text-anchor="middle">3</text><rect class="dg-hash" x="578" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="587.0" y="155" text-anchor="middle">2</text><rect class="dg-hash" x="598" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="607.0" y="155" text-anchor="middle">6</text><rect class="dg-hash" x="618" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="627.0" y="155" text-anchor="middle">E</text><rect class="dg-hash" x="638" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="647.0" y="155" text-anchor="middle">C</text><rect class="dg-hash" x="658" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="667.0" y="155" text-anchor="middle">A</text><rect class="dg-hash" x="678" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="687.0" y="155" text-anchor="middle">F</text><rect class="dg-hash" x="698" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="707.0" y="155" text-anchor="middle">D</text><rect class="dg-hash" x="718" y="136" width="18" height="28" rx="2"/><text class="dg-hex" x="727.0" y="155" text-anchor="middle">3</text><text class="dg-sub" x="222.0" y="155" text-anchor="middle">-</text><text class="dg-sub" x="312.0" y="155" text-anchor="middle">-</text><text class="dg-sub" x="402.0" y="155" text-anchor="middle">-</text><text class="dg-sub" x="492.0" y="155" text-anchor="middle">-</text><path class="dg-dim" d="M58 170 V176 H736 V170"/><text class="dg-sub" x="397.0" y="192" text-anchor="middle">SHA-1( namespace URL + 'test.com/1' ), primi 128 bit</text><text class="dg-lbl" x="6" y="247">v7</text><rect class="dg-ts" x="58" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="67.0" y="247" text-anchor="middle">0</text><rect class="dg-ts" x="78" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="87.0" y="247" text-anchor="middle">1</text><rect class="dg-ts" x="98" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="107.0" y="247" text-anchor="middle">A</text><rect class="dg-ts" x="118" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="127.0" y="247" text-anchor="middle">0</text><rect class="dg-ts" x="138" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="147.0" y="247" text-anchor="middle">E</text><rect class="dg-ts" x="158" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="167.0" y="247" text-anchor="middle">8</text><rect class="dg-ts" x="178" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="187.0" y="247" text-anchor="middle">E</text><rect class="dg-ts" x="198" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="207.0" y="247" text-anchor="middle">0</text><rect class="dg-ts" x="228" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="237.0" y="247" text-anchor="middle">E</text><rect class="dg-ts" x="248" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="257.0" y="247" text-anchor="middle">A</text><rect class="dg-ts" x="268" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="277.0" y="247" text-anchor="middle">F</text><rect class="dg-ts" x="288" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="297.0" y="247" text-anchor="middle">7</text><rect class="dg-ver" x="318" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="327.0" y="247" text-anchor="middle">7</text><rect class="dg-rnd" x="338" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="347.0" y="247" text-anchor="middle">9</text><rect class="dg-rnd" x="358" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="367.0" y="247" text-anchor="middle">0</text><rect class="dg-rnd" x="378" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="387.0" y="247" text-anchor="middle">5</text><rect class="dg-var" x="408" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="417.0" y="247" text-anchor="middle">A</text><rect class="dg-rnd" x="428" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="437.0" y="247" text-anchor="middle">C</text><rect class="dg-rnd" x="448" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="457.0" y="247" text-anchor="middle">3</text><rect class="dg-rnd" x="468" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="477.0" y="247" text-anchor="middle">6</text><rect class="dg-rnd" x="498" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="507.0" y="247" text-anchor="middle">7</text><rect class="dg-rnd" x="518" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="527.0" y="247" text-anchor="middle">2</text><rect class="dg-rnd" x="538" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="547.0" y="247" text-anchor="middle">7</text><rect class="dg-rnd" x="558" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="567.0" y="247" text-anchor="middle">3</text><rect class="dg-rnd" x="578" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="587.0" y="247" text-anchor="middle">3</text><rect class="dg-rnd" x="598" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="607.0" y="247" text-anchor="middle">7</text><rect class="dg-rnd" x="618" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="627.0" y="247" text-anchor="middle">D</text><rect class="dg-rnd" x="638" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="647.0" y="247" text-anchor="middle">F</text><rect class="dg-rnd" x="658" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="667.0" y="247" text-anchor="middle">0</text><rect class="dg-rnd" x="678" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="687.0" y="247" text-anchor="middle">8</text><rect class="dg-rnd" x="698" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="707.0" y="247" text-anchor="middle">6</text><rect class="dg-rnd" x="718" y="228" width="18" height="28" rx="2"/><text class="dg-hex" x="727.0" y="247" text-anchor="middle">3</text><text class="dg-sub" x="222.0" y="247" text-anchor="middle">-</text><text class="dg-sub" x="312.0" y="247" text-anchor="middle">-</text><text class="dg-sub" x="402.0" y="247" text-anchor="middle">-</text><text class="dg-sub" x="492.0" y="247" text-anchor="middle">-</text><path class="dg-dim" d="M58 262 V268 H306 V262"/><text class="dg-sub" x="182.0" y="284" text-anchor="middle">ms dal 1/1/1970 = 28/09/2026 16:37:29.463 UTC</text><path class="dg-dim" d="M338 262 V268 H736 V262"/><text class="dg-sub" x="537.0" y="284" text-anchor="middle">casuali (74 bit)</text></svg></div><figcaption><span class="scroll-hint">Scorri il diagramma in orizzontale. </span>Tre UUID reali, carattere per carattere. Nella v7 i primi 12 caratteri sono il timestamp; nella v5 tutto viene dall'hash SHA-1; nella v4 tutto è casuale. Il 13° carattere è sempre la versione, il 17° la variante.</figcaption></figure><h3>L'esempio della slide</h3><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <span class="f">uuid</span> ( <mark class="nw"><span class="n">7</span></mark> ) ordered,
+       <span class="f">uuid</span> ( <mark class="nw"><span class="n">5</span>, <span class="s">'url'</span>, <span class="s">'test.com/'</span> || <span class="k">level</span></mark> ) name_hash
+<span class="k">connect</span> <span class="k">by</span> <span class="k">level</span> &lt;= <span class="n">5</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>ORDERED                          NAME_HASH
+-------------------------------- --------------------------------
+01A0E8E0EAF77905AC36727337DF0863 7A6FAB4AAD8D580DB94DC96326ECAFD3
+01A0E8E0EAF774B598794591B00B11F8 71C14E795E2952268BF902F6AB8BF253
+01A0E8E0EAF77AE1B9C60F09E5D10539 F0605E638A0D5D3F83AAB922D53E34AD
+01A0E8E0EAF770C2B96AE74FB6DC19FD 0FF40BF60259579BA9753E2DFBE1FEA7
+01A0E8E0EAF77C788E278EAE68E1E447 5506B60E7A0C5FDFB1A0D97AF8D41A6F</pre></div><h3>Come si legge</h3><ul class="list"><li><strong>ORDERED (v7).</strong> <code>01A0E8E0EAF7</code> sono 1.790.613.449.463 millisecondi dal 1° gennaio 1970, cioè il 28 settembre 2026 alle 16:37:29,463 UTC: il momento in cui è stata preparata la slide.</li><li><strong>Stesso millisecondo, ordine casuale.</strong> Le cinque righe hanno lo stesso prefisso perché sono nate nello stesso millisecondo. Le cifre successive (905, 4B5, AE1, 0C2, C78) non crescono: l'ordine segue il tempo al millisecondo, dentro il millisecondo è casuale.</li><li><strong>NAME_HASH (v5).</strong> I cinque valori coincidono con quelli di Python <code>uuid.uuid5(uuid.NAMESPACE_URL, 'test.com/1')</code> … <code>'test.com/5'</code>: li ho confrontati tutti. <code>'url'</code> è uno dei namespace standard; la documentazione cita DNS, URL, OID e X500.</li></ul><div class="code"><div class="blk-h"><span class="blk-t">Python</span><button class="copy" type="button">Copia</button></div><pre><code>import uuid
+uuid.uuid5(uuid.NAMESPACE_URL, 'test.com/1')
+# UUID('7a6fab4a-ad8d-580d-b94d-c96326ecafd3')</code></pre></div><h3>Prima della 23.26.4</h3><div class="out err"><div class="blk-h"><span class="blk-t">Su 23.26.3</span><span class="chip run">eseguito 23.26.3</span></div><pre>select uuid(7);
+ORA-62433: Invalid or unsupported argument to UUID function
+
+select uuid(5, 'url', 'test.com/1');
+ORA-00939: too many arguments for function
+
+select is_uuid('7a6fab4a-ad8d-580d-b94d-c96326ecafd3');
+FALSE
+
+select uuid_to_raw('7a6fab4a-ad8d-580d-b94d-c96326ecafd3');
+ORA-62432: 7a6fab4a-ad8d-580d-b94d-c96326ecafd3 is not a valid UUID value.</pre></div><p>Su 23.26.3 anche le funzioni di supporto (<code>IS_UUID</code>, <code>UUID_TO_RAW</code>, <code>RAW_TO_UUID</code>) accettano solo la versione 4: un UUID v5 o v7 generato da un'applicazione viene rifiutato. Nella 23.26.4 <code>IS_UUID</code> riconosce le versioni 4, 5 e 7.</p><h3>Come funziona la v5, in SQL</h3><p>La v5 è l'hash SHA-1 del namespace seguito dal nome, troncato a 128 bit, con versione e variante sovrascritte. Questa query ricostruisce i valori della slide senza <code>UUID(5, …)</code>: utile per capire il meccanismo e per generare le stesse chiavi su release precedenti.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <span class="k">level</span> n,
+       <span class="f">utl_raw</span>.<span class="f">bit_or</span>(
+         <span class="f">utl_raw</span>.<span class="f">bit_and</span>(
+           <span class="f">utl_raw</span>.<span class="f">substr</span>(
+             <span class="f">standard_hash</span>(<span class="f">utl_raw</span>.<span class="f">concat</span>(<span class="f">hextoraw</span>(<span class="s">'6BA7B8119DAD11D180B400C04FD430C8'</span>),  <span class="c">-- namespace URL</span>
+                                          <span class="f">utl_raw</span>.<span class="f">cast_to_raw</span>(<span class="s">'test.com/'</span> || <span class="k">level</span>)), <span class="s">'SHA1'</span>), <span class="n">1</span>, <span class="n">16</span>),
+           <span class="f">hextoraw</span>(<span class="s">'FFFFFFFFFFFF0FFF3FFFFFFFFFFFFFFF'</span>)),      <span class="c">-- azzera versione e variante</span>
+         <span class="f">hextoraw</span>(<span class="s">'00000000000050008000000000000000'</span>)) uuid_v5  <span class="c">-- versione 5, variante RFC</span>
+<span class="k">connect</span> <span class="k">by</span> <span class="k">level</span> &lt;= <span class="n">5</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre> N UUID_V5
+-- --------------------------------
+ 1 7A6FAB4AAD8D580DB94DC96326ECAFD3
+ 2 71C14E795E2952268BF902F6AB8BF253
+ 3 F0605E638A0D5D3F83AAB922D53E34AD
+ 4 0FF40BF60259579BA9753E2DFBE1FEA7
+ 5 5506B60E7A0C5FDFB1A0D97AF8D41A6F</pre></div><h3>Esempi</h3><h4>Quando è stato creato un UUID v7</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">with</span> u <span class="k">as</span> (<span class="k">select</span> <span class="f">hextoraw</span>(<span class="s">'01A0E8E0EAF77905AC36727337DF0863'</span>) id)
+<span class="k">select</span> <span class="f">regexp_replace</span>(<span class="f">lower</span>(<span class="f">rawtohex</span>(id)),
+                      <span class="s">'(.{8})(.{4})(.{4})(.{4})(.{12})'</span>, <span class="s">'\1-\2-\3-\4-\5'</span>) uuid_testo,
+       <span class="f">substr</span>(<span class="f">rawtohex</span>(id), <span class="n">13</span>, <span class="n">1</span>) v,
+       <span class="k">timestamp</span> <span class="s">'1970-01-01 00:00:00 UTC'</span>
+         + <span class="f">numtodsinterval</span>(<span class="f">to_number</span>(<span class="f">substr</span>(<span class="f">rawtohex</span>(id), <span class="n">1</span>, <span class="n">12</span>), <span class="s">'XXXXXXXXXXXX'</span>) / <span class="n">1000</span>, <span class="s">'SECOND'</span>) creato_utc
+<span class="k">from</span>   u;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>UUID_TESTO                           V CREATO_UTC
+------------------------------------ - -----------------------------------
+01a0e8e0-eaf7-7905-ac36-727337df0863 7 28-SEP-26 04.37.29.463000000 PM UTC</pre></div><p>Con la 23.26.4 basta sostituire il letterale con <code>uuid(7)</code>. Il <code>REGEXP_REPLACE</code> formatta qualsiasi valore a 32 cifre, anche quando <code>RAW_TO_UUID</code> non riconosce la versione.</p><h4>Chiave primaria ordinata nel tempo</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">table</span> ordini (
+  id       <span class="k">raw</span>(<span class="n">16</span>) <span class="k">primary</span> <span class="k">key</span>,
+  cliente  <span class="k">varchar2</span>(<span class="n">30</span>) <span class="k">not</span> <span class="k">null</span>,
+  importo  <span class="k">number</span>(<span class="n">10</span>,<span class="n">2</span>) <span class="k">not</span> <span class="k">null</span>
+);
+
+<span class="k">insert</span> <span class="k">into</span> ordini (id, cliente, importo) <span class="k">values</span> (<mark class="nw"><span class="f">uuid</span> ( <span class="n">7</span> )</mark>, <span class="s">'ACME'</span>, <span class="n">120</span>);
+
+<span class="c">-- ORDER BY id restituisce l'ordine di inserimento, al millisecondo</span>
+<span class="k">select</span> <span class="f">raw_to_uuid</span>(id) id, cliente, importo <span class="k">from</span> ordini <span class="k">order</span> <span class="k">by</span> id;</code></pre></div><p><span class="aside">Su 23.26.3 la clausola <code>DEFAULT</code> accetta <code>uuid()</code> ma rifiuta <code>uuid(4)</code> con ORA-00907, anche se <code>select uuid(4)</code> funziona. Prima di scrivere <code>default uuid(7)</code> verifica che la tua release lo accetti; valorizzare l'ID nell'INSERT funziona comunque.</span></p><h4>Chiave stabile per caricamenti ripetibili</h4><p>La v5 dà sempre lo stesso UUID per lo stesso nome. Ricaricando lo stesso file la chiave non cambia: niente duplicati e niente tabella di corrispondenza. Un'applicazione che usa <code>uuid5(NAMESPACE_URL, …)</code> ottiene lo stesso valore.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">merge</span> <span class="k">into</span> clienti_dw d
+<span class="k">using</span> (<span class="k">select</span> <mark class="nw"><span class="f">uuid</span> ( <span class="n">5</span>, <span class="s">'url'</span>, <span class="s">'https://crm.example.it/clienti/'</span> || codice )</mark> id,
+              codice, nome
+       <span class="k">from</span>   stg_clienti) s
+<span class="k">on</span> (d.id = s.id)
+<span class="k">when</span> <span class="k">matched</span> <span class="k">then</span>
+  <span class="k">update</span> <span class="k">set</span> d.nome = s.nome
+<span class="k">when</span> <span class="k">not</span> <span class="k">matched</span> <span class="k">then</span>
+  <span class="k">insert</span> (id, codice, nome) <span class="k">values</span> (s.id, s.codice, s.nome);</code></pre></div><h3>Misura: cosa succede all'indice di chiave primaria</h3><p>200.000 inserimenti riga per riga in tabelle con chiave primaria <code>RAW(16)</code>, su 23.26.3. La v7 è emulata con lo stesso layout di bit e con bit casuali dentro il millisecondo, come nella slide. Il ritmo è in righe per millisecondo sullo stesso indice: 5 righe/ms sono 5.000 righe al secondo. Fonti: statistiche <code>leaf node splits</code> e <code>INDEX_STATS</code>.</p><div class="out"><div class="blk-h"><span class="blk-t">Foglie dell'indice e riempimento medio dei blocchi</span><span class="chip run">eseguito 23.26.3</span></div><pre>CHIAVE                FOGLIE PCT RIEMPIMENTO
+--------------------- ------ --- -----------
+IDENTITY (sequenza)      374 100 ██████████
+UUID v7, 1 riga/ms       676 100 ██████████
+UUID v4 (casuale)        985  69 ██████▉
+UUID v7, 5 righe/ms     1154  59 █████▉
+UUID v7, 100 righe/ms   1328  51 █████▏
+UUID v7, 25 righe/ms    1333  51 █████▏</pre></div><ul class="list"><li><strong>Sequenza:</strong> chiavi crescenti e corte, split 90-10, blocchi pieni al 100%. Resta la chiave più compatta.</li><li><strong>v4:</strong> chiavi sparse, split 50-50, blocchi pieni al 69% circa, il valore tipico degli inserimenti casuali. Ogni insert può toccare qualsiasi blocco dell'indice: quando l'indice non sta in memoria diventano letture da disco.</li><li><strong>v7 fino a 2 righe/ms:</strong> le chiavi arrivano in ordine e l'indice si comporta come con una sequenza: 100% e insert concentrati sul bordo destro.</li><li><strong>v7 da 5 righe/ms in su:</strong> nello stesso millisecondo l'ordine è casuale, il blocco di destra si divide 50-50 e la metà sinistra non riceve più chiavi. Risultato: blocchi pieni al 51%, peggio di v4.</li><li><strong>Caricamenti massivi:</strong> lo stesso carico a 100 righe/ms con <code>INSERT /*+ APPEND */</code> (direct-path) produce un indice pieno al 100% (676 foglie contro 1.329), perché l'indice viene aggiornato in blocco a fine istruzione.</li></ul><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Un v7 rivela quando è stato creato.</strong> Chi vede l'ID vede la data e l'ora.</li><li><strong>La v5 è deterministica.</strong> Chiunque conosca namespace e nome la ricalcola: non usarla come token segreto. Normalizza il nome prima di calcolarla: <code>'Test.com/1'</code> e <code>'test.com/1'</code> danno UUID diversi, e con caratteri non ASCII conta la codifica dei byte.</li><li><strong>Conserva gli UUID come RAW(16):</strong> 16 byte contro i 36 di <code>VARCHAR2(36)</code>, confronti più veloci e indici più piccoli. Il formato con i trattini serve solo in visualizzazione.</li><li><strong>PL/SQL.</strong> Su 23.26.3 <code>UUID</code> e <code>RAW_TO_UUID</code> non si possono chiamare come funzioni PL/SQL (PLS-00201): si usano dentro un'istruzione SQL, per esempio <code>select raw_to_uuid(uuid()) into l_id;</code>.</li></ul></div></section><section id="bar-chart" class="feat"><header class="feat-h"><p class="eyebrow">BAR_CHART ( valore, massimo, minimo, larghezza, simbolo )</p><h2>BAR_CHART</h2><p class="kicker">Una funzione che restituisce una barra di testo proporzionale a un valore. Serve a vedere una distribuzione direttamente nel risultato di una query, in SQL*Plus, SQLcl o qualsiasi altro client.</p></header><div class="code"><div class="blk-h"><span class="blk-t">Sintassi</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="f">BAR_CHART</span> ( valore [, massimo [, minimo [, larghezza [, simbolo ] ] ] ] )</code></pre></div><div class="tbl"><table><thead><tr><th>Parametro</th><th>Predefinito</th><th>Significato</th></tr></thead><tbody><tr><td><code>massimo</code></td><td>100</td><td>Valore che riempie tutta la barra. Viene <em>prima</em> del minimo.</td></tr><tr><td><code>minimo</code></td><td>0</td><td>Valore che corrisponde alla barra vuota.</td></tr><tr><td><code>larghezza</code></td><td>10</td><td>Caratteri della barra piena.</td></tr><tr><td><code>simbolo</code></td><td>blocchi Unicode</td><td>Se omesso, la parte frazionaria è disegnata con i blocchi parziali ▏▎▍▌▋▊▉; con un simbolo scelto, per esempio <code>'#'</code>, la lunghezza viene arrotondata all'intero.</td></tr></tbody></table></div><p>La lunghezza vale (valore − minimo) ÷ (massimo − minimo) × larghezza. Oltre il massimo la barra resta piena.</p><h3>L'esempio della slide</h3><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> salary,
+       <mark class="nw"><span class="f">bar_chart</span> ( salary )</mark> max_100,
+       <mark class="nw"><span class="f">bar_chart</span> ( salary, <span class="n">24000</span> )</mark> max_24000,
+       <mark class="nw"><span class="f">bar_chart</span> ( salary, <span class="n">24000</span>, <span class="n">0</span>, <span class="n">20</span>, <span class="s">'#'</span> )</mark> max_24000_20_chars
+<span class="k">from</span>   hr.employees;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (ricopiato dalla slide)</span><span class="chip slide">slide 23.26.4</span></div><pre>    SALARY MAX_100    MAX_24000  MAX_24000_20_CHARS
+---------- ---------- ---------- --------------------
+     24000 ██████████ ██████████ ####################
+     17000 ██████████ ███████    ##############
+     17000 ██████████ ███████    ##############
+      9000 ██████████ ███▊       ########
+      6000 ██████████ ██▌        #####
+      4800 ██████████ ██         ####
+      4800 ██████████ ██         ####
+...</pre></div><ul class="list"><li><strong>MAX_100:</strong> con la scala predefinita 0–100 ogni stipendio supera il massimo, quindi tutte le barre sono piene. La scala predefinita è pensata per le percentuali.</li><li><strong>MAX_24000:</strong> 9.000 su 24.000 vale 3,75 caratteri: tre blocchi pieni e uno da tre quarti.</li><li><strong>MAX_24000_20_CHARS:</strong> con <code>'#'</code> e larghezza 20, 9.000 vale 7,5 caratteri e diventa 8 <code>#</code>; 17.000 vale 14,2 e diventa 14. Ho riprodotto tutti i conteggi della colonna con <code>RPAD</code> e <code>ROUND</code>.</li></ul><h3>Esempi</h3><h4>Percentuali</h4><p>La quota della spesa per stipendi di ogni reparto. La scala resta 0–100; la larghezza 20 dà più dettaglio.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> department_name,
+       <span class="f">round</span>(<span class="n">100</span> * <span class="f">ratio_to_report</span>(<span class="f">sum</span>(salary)) <span class="k">over</span> (), <span class="n">1</span>) pct,
+       <mark class="nw"><span class="f">bar_chart</span> ( <span class="f">round</span>(<span class="n">100</span> * <span class="f">ratio_to_report</span>(<span class="f">sum</span>(salary)) <span class="k">over</span> (), <span class="n">1</span>), <span class="n">100</span>, <span class="n">0</span>, <span class="n">20</span> )</mark> quota
+<span class="k">from</span>   hr.employees
+<span class="k">join</span>   hr.departments <span class="k">using</span> (department_id)
+<span class="k">group</span>  <span class="k">by</span> department_name
+<span class="k">order</span>  <span class="k">by</span> pct <span class="k">desc</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>DEPARTMENT_NAME      PCT QUOTA
+------------------ ----- --------------------
+Sales               44.5 ████████▉
+Shipping            22.9 ████▋
+Executive            8.5 █▊
+Finance              7.5 █▌
+IT                   4.2 ▉
+Purchasing           3.6 ▊
+Accounting             3 ▋
+Marketing            2.8 ▌
+Public Relations     1.5 ▎
+Human Resources       .9 ▏
+Administration        .6 ▏</pre></div><h4>Istogramma con scala automatica</h4><p>Passando come massimo <code>MAX(...) OVER ()</code>, la riga più alta riempie sempre la barra, qualunque siano i valori.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> <span class="f">extract</span>(<span class="k">year</span> <span class="k">from</span> hire_date) anno,
+       <span class="f">count</span>(*) n,
+       <mark class="nw"><span class="f">bar_chart</span> ( <span class="f">count</span>(*), <span class="f">max</span>(<span class="f">count</span>(*)) <span class="k">over</span> (), <span class="n">0</span>, <span class="n">30</span>, <span class="s">'#'</span> )</mark> grafico
+<span class="k">from</span>   hr.employees
+<span class="k">group</span>  <span class="k">by</span> <span class="f">extract</span>(<span class="k">year</span> <span class="k">from</span> hire_date)
+<span class="k">order</span>  <span class="k">by</span> anno;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>ANNO   N GRAFICO
+---- --- ------------------------------
+2011   1 #
+2012   7 #######
+2013   6 ######
+2014  10 ##########
+2015  29 ##############################
+2016  24 #########################
+2017  19 ####################
+2018  11 ###########</pre></div><h4>Insieme alle finestre temporali</h4><p>Assunzioni nei due anni successivi, calcolate ogni sei mesi con <code>HOP</code> (vedi più sotto): la colonna di barre diventa un piccolo grafico dell'andamento.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start,
+       <span class="f">count</span>(*) n,
+       <mark class="nw"><span class="f">bar_chart</span> ( <span class="f">count</span>(*), <span class="f">max</span>(<span class="f">count</span>(*)) <span class="k">over</span> (), <span class="n">0</span>, <span class="n">30</span>, <span class="s">'#'</span> )</mark> grafico
+<span class="k">from</span>   <mark class="nw"><span class="f">hop</span> ( hr.employees, <span class="k">columns</span> ( hire_date ), <span class="k">interval</span> <span class="s">'6'</span> <span class="k">month</span>, <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> window_start
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START   N GRAFICO
+------------ --- ------------------------------
+01-JUL-2009    1 #
+01-JAN-2010    1 #
+01-JUL-2010    5 ###
+01-JAN-2011    8 #####
+01-JUL-2011   10 ######
+01-JAN-2012   13 #######
+01-JUL-2012   16 #########
+01-JAN-2013   16 #########
+01-JUL-2013   27 ###############
+01-JAN-2014   39 ######################
+01-JUL-2014   48 ###########################
+01-JAN-2015   53 ##############################
+01-JUL-2015   51 #############################
+01-JAN-2016   43 ########################
+01-JUL-2016   38 ######################
+01-JAN-2017   30 #################
+01-JUL-2017   18 ##########
+01-JAN-2018   11 ######</pre></div><h4>Prima della 23.26.4</h4><p>Le stesse barre si ottengono con <code>RPAD</code> per un simbolo ASCII e con <code>UNISTR</code> per i blocchi Unicode. È anche il modo più chiaro di spiegare cosa calcola la funzione.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- come bar_chart(salary, 24000, 0, 20, '#')</span>
+<span class="k">select</span> salary,
+       <span class="f">rpad</span>(<span class="s">'#'</span>, <span class="f">round</span>((salary - <span class="n">0</span>) / (<span class="n">24000</span> - <span class="n">0</span>) * <span class="n">20</span>), <span class="s">'#'</span>) barra
+<span class="k">from</span>   hr.employees;
+
+<span class="c">-- come bar_chart(salary, 24000): blocchi pieni + un blocco parziale in ottavi</span>
+<span class="k">with</span> d <span class="k">as</span> (
+  <span class="k">select</span> salary, <span class="f">least</span>(<span class="f">greatest</span>((salary - <span class="n">0</span>) / (<span class="n">24000</span> - <span class="n">0</span>), <span class="n">0</span>), <span class="n">1</span>) * <span class="n">10</span> x
+  <span class="k">from</span>   hr.employees
+)
+<span class="k">select</span> salary,
+       <span class="k">replace</span>(<span class="f">rpad</span>(<span class="s">' '</span>, <span class="f">trunc</span>(x)), <span class="s">' '</span>, <span class="f">unistr</span>(<span class="s">'\2588'</span>))
+       || <span class="f">substr</span>(<span class="f">unistr</span>(<span class="s">' \258F\258E\258D\258C\258B\258A\2589'</span>), <span class="f">round</span>(<span class="f">mod</span>(x, <span class="n">1</span>) * <span class="n">8</span>) + <span class="n">1</span>, <span class="n">1</span>) barra
+<span class="k">from</span>   d;</code></pre></div><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Ordine dei parametri.</strong> Il secondo parametro è il massimo, il terzo il minimo.</li><li><strong>Scala predefinita.</strong> 0–100 va bene per le percentuali; per altri valori passa sempre il massimo, o calcolalo con <code>MAX() OVER ()</code>.</li><li><strong>Caratteri.</strong> I blocchi Unicode richiedono un client e un font che li mostrino; se vedi simboli strani usa un simbolo ASCII come <code>'#'</code>.</li><li><strong>È per l'esplorazione.</strong> Utile in aula, nel debug e nei report testuali; non sostituisce un grafico.</li></ul></div></section><section id="macro" class="feat"><header class="feat-h"><p class="eyebrow">CREATE MACRO</p><h2>CREATE MACRO</h2><p class="kicker">Le SQL macro esistono dalla 19c (di tabella) e dalla 21c (scalari), ma si scrivevano come funzioni PL/SQL che restituiscono il testo SQL dentro una stringa. <code>CREATE MACRO</code> permette di scrivere direttamente il SQL: una macro scalare è un'espressione riutilizzabile, una macro di tabella è una vista con parametri.</p></header><h3>Macro di tabella: prima e ora</h3><div class="cmp"><div class="cmp-col"><p class="cmp-t old">Fino a 23.26.3</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">function</span> dept_totals ( hired_after <span class="k">date</span> )
+  <span class="k">return</span> <span class="k">varchar2</span> <span class="k">sql_macro</span>(<span class="k">table</span>) <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="k">return</span> <span class="s">q'[select department_id, count(*) emp#
+            from   hr.employees
+            where  hire_date &gt; hired_after
+            group  by all]'</span>;
+<span class="k">end</span>;
+/
+
+<span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">function</span> get_3_rows ( table_name dbms_tf.table_t )
+  <span class="k">return</span> <span class="k">varchar2</span> <span class="k">sql_macro</span>(<span class="k">table</span>) <span class="k">is</span>
+<span class="k">begin</span>
+  <span class="k">return</span> <span class="s">'select * from table_name fetch first 3 rows only'</span>;
+<span class="k">end</span>;
+/</code></pre></div></div><div class="cmp-col"><p class="cmp-t new">Con 23.26.4</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">/* Parameterized view */</span>
+<mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> dept_totals ( hired_after <span class="k">date</span> ) <mark class="nw"><span class="k">is</span></mark>
+  <span class="k">select</span> department_id, <span class="f">count</span>(*) emp# <span class="k">from</span> hr.employees
+  <span class="k">where</span>  hire_date &gt; hired_after <span class="k">group</span> <span class="k">by</span> <span class="k">all</span>;
+
+<span class="c">/* Polymorphic view - pass table name as parameter */</span>
+<mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> get_3_rows ( table_name <mark class="nw"><span class="k">table</span></mark> ) <mark class="nw"><span class="k">is</span></mark>
+  <span class="k">select</span> * <span class="k">from</span> table_name <span class="k">fetch</span> <span class="k">first</span> <span class="n">3</span> <span class="k">rows</span> <span class="k">only</span>;</code></pre></div></div></div><div class="code"><div class="blk-h"><span class="blk-t">Uso (identico nelle due forme)</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> * <span class="k">from</span> get_3_rows ( hr.departments )
+<span class="k">left</span> <span class="k">join</span> dept_totals ( <span class="k">date</span> <span class="s">'2015-01-01'</span> ) <span class="k">using</span> ( department_id );</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID       EMP#
+------------- ------------------------------ ---------- ----------- ----------
+           30 Purchasing                            114        1700          4
+           20 Marketing                             201        1800          1
+           10 Administration                        200        1700     &lt;null&gt;</pre></div><p><code>dept_totals</code> è una vista con un parametro: conta, per reparto, gli assunti dopo una data. <code>get_3_rows</code> è polimorfica: accetta una tabella qualsiasi tramite il tipo <code>TABLE</code>, che prende il posto di <code>DBMS_TF.TABLE_T</code>. Si combinano in join come tabelle. Con le macro in forma PL/SQL su 23.26.3 la stessa query dà lo stesso risultato.</p><h3>Macro scalari</h3><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">/* Scalar macro to format the name */</span>
+<mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> formatted_name ( given <span class="k">varchar2</span>, family <span class="k">varchar2</span> ) <mark class="nw"><span class="k">is</span></mark>
+family || <span class="s">', '</span> || given;
+
+<span class="c">/* Does the string contain Z or z? */</span>
+<span class="c">-- Parentheses =&gt; predicate use in WHERE</span>
+<mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> contains_z ( str <span class="k">varchar2</span> ) <mark class="nw"><span class="k">is</span></mark>
+( str <span class="k">like</span> <span class="s">'%z%'</span> <span class="k">collate</span> binary_ci );
+
+<span class="k">select</span> formatted_name ( first_name, last_name ) <span class="k">from</span> hr.employees
+<span class="k">where</span>  contains_z ( last_name );</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (macro in forma PL/SQL, ordinato)</span><span class="chip run">eseguito 23.26.3</span></div><pre>FORMATTED_NAME(FIRST_NAME,LAST_NAME)
+----------------------------------------------
+Errazuriz, Alberto
+Gietz, William
+Martinez, Michael
+Ozer, Lisa
+Venzl, Timothy
+Zlotkey, Eleni</pre></div><p>Il corpo di <code>contains_z</code> è una condizione. Tra parentesi diventa un'espressione booleana (il tipo <code>BOOLEAN</code> di 23ai) e la macro si usa direttamente nella <code>WHERE</code>, come dice il commento della slide. Nel piano d'esecuzione la macro non c'è più, c'è il suo testo:</p><div class="out"><div class="blk-h"><span class="blk-t">DBMS_XPLAN</span><span class="chip run">eseguito 23.26.3</span></div><pre>----------------------------------------
+| Id  | Operation        | Name        |
+----------------------------------------
+|   0 | SELECT STATEMENT |             |
+|*  1 |  INDEX FULL SCAN | EMP_NAME_IX |
+----------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+   1 - filter(("LAST_NAME" LIKE '%z%' COLLATE "BINARY_CI")=TRUE)</pre></div><p>Nessuna chiamata di funzione: niente passaggi tra SQL e PL/SQL a ogni riga, e l'ottimizzatore lavora sull'espressione vera (qui sceglie la scansione dell'indice sui nomi).</p><h3>Cosa cambia rispetto alla funzione SQL_MACRO</h3><ul class="list"><li><strong>Niente PL/SQL e niente stringhe.</strong> Spariscono <code>return varchar2</code>, <code>begin … end</code>, gli apici raddoppiati e <code>q'[…]'</code>; l'editor evidenzia e completa il SQL.</li><li><strong>Gli errori di sintassi emergono subito.</strong> Il corpo fa parte dell'istruzione, quindi un errore fa fallire il <code>CREATE</code>. Con la funzione classica il testo è una stringa: la funzione viene creata senza errori e il problema emerge solo quando qualcuno la usa.</li><li><strong>Macro nella clausola WITH.</strong> Dalla 23.26.4 si possono usare dentro la <code>WITH</code>; prima l'errore era ORA-64630 (fonte: blog Oracle sulle viste con parametri).</li></ul><div class="out err"><div class="blk-h"><span class="blk-t">La forma PL/SQL su 23.26.3</span><span class="chip run">eseguito 23.26.3</span></div><pre>create or replace function macro_rotta return varchar2 sql_macro(table) is
+begin
+  return 'selec * from dual';
+end;
+/
+Function created.
+
+select * from macro_rotta();
+ORA-64626: invalid SQL text returned from SQL macro:
+ORA-00907: missing right parenthesis
+
+with x as (select * from dept_totals(date '2017-01-01'))
+select * from x;
+ORA-64630: unsupported use of SQL macro: use of SQL macro inside WITH clause is not supported</pre></div><h3>Altri esempi</h3><h4>Primi N di una tabella qualsiasi</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> top_n ( tab <mark class="nw"><span class="k">table</span></mark>, n <span class="k">number</span> ) <mark class="nw"><span class="k">is</span></mark>
+  <span class="k">select</span> * <span class="k">from</span> tab <span class="k">fetch</span> <span class="k">first</span> n <span class="k">rows</span> <span class="k">only</span>;
+
+<span class="k">select</span> * <span class="k">from</span> top_n ( hr.jobs, <span class="n">2</span> );</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (forma PL/SQL)</span><span class="chip run">eseguito 23.26.3</span></div><pre>JOB_ID     JOB_TITLE                     MIN_SALARY MAX_SALARY
+---------- ----------------------------- ---------- ----------
+AD_PRES    President                          20080      40000
+AD_VP      Administration Vice President      15000      30000</pre></div><h4>Regole di business come espressioni</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> stipendio_annuo ( sal <span class="k">number</span>, comm <span class="k">number</span> ) <mark class="nw"><span class="k">is</span></mark>
+  sal * <span class="n">12</span> * ( <span class="n">1</span> + <span class="f">nvl</span> ( comm, <span class="n">0</span> ) );
+
+<mark class="nw"><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span> <span class="k">macro</span></mark> tra ( d <span class="k">date</span>, da <span class="k">date</span>, a <span class="k">date</span> ) <mark class="nw"><span class="k">is</span></mark>
+  ( d &gt;= da <span class="k">and</span> d &lt; a );
+
+<span class="k">select</span> last_name, salary, commission_pct,
+       stipendio_annuo ( salary, commission_pct ) annuo
+<span class="k">from</span>   hr.employees
+<span class="k">where</span>  tra ( hire_date, <span class="k">date</span> <span class="s">'2018-01-01'</span>, <span class="k">date</span> <span class="s">'2019-01-01'</span> )
+<span class="k">order</span>  <span class="k">by</span> annuo <span class="k">desc</span>
+<span class="k">fetch</span>  <span class="k">first</span> <span class="n">5</span> <span class="k">rows</span> <span class="k">only</span>;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato (forma PL/SQL)</span><span class="chip run">eseguito 23.26.3</span></div><pre>LAST_NAME SALARY COMMISSION_PCT  ANNUO
+--------- ------ -------------- ------
+Zlotkey    10500             .2 151200
+Marvins     7200             .1  95040
+Lee         6800             .1  89760
+Ande        6400             .1  84480
+Banda       6200             .1  81840</pre></div><h4>Macro dentro la WITH</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">with</span> recenti <span class="k">as</span> (
+  <span class="k">select</span> * <span class="k">from</span> <mark class="nw">dept_totals ( <span class="k">date</span> <span class="s">'2017-01-01'</span> )</mark>
+)
+<span class="k">select</span> * <span class="k">from</span> recenti
+<span class="k">order</span>  <span class="k">by</span> emp# <span class="k">desc</span>, department_id;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>DEPARTMENT_ID       EMP#
+------------- ----------
+           50         13
+           80         12
+           60          2
+           30          1
+          100          1
+                       1</pre></div><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Non dare ai parametri il nome di una colonna.</strong> Con la forma PL/SQL (verificato su 23.26.3) una macro con parametro <code>department_id</code> e filtro <code>where department_id = department_id</code> restituisce 106 righe invece di 45: il confronto diventa colonna = colonna. Usa nomi distinti, come fa la slide (<code>hired_after</code>, <code>given</code>, <code>family</code>).</li><li><strong>FETCH FIRST senza ORDER BY.</strong> <code>get_3_rows</code> restituisce tre righe qualsiasi: nella slide escono i reparti 30, 20 e 10. Internamente diventa <code>WHERE ROWNUM &lt;= 3</code>. Se l'ordine conta, mettilo nella macro.</li><li><strong>Dove si usano.</strong> Una macro di tabella va nella <code>FROM</code>; una macro scalare va dove va un'espressione (<code>SELECT</code>, <code>WHERE</code>, <code>ORDER BY</code>), non nella <code>FROM</code>.</li></ul></div></section><section id="finestre" class="feat"><header class="feat-h"><p class="eyebrow">TUMBLE · HOP · CUMULATE · SESSIONS</p><h2>Finestre temporali nella FROM</h2><p class="kicker">Quattro funzioni da usare nella <code>FROM</code>: assegnano ogni riga a una o più finestre di tempo e aggiungono le colonne <code>WINDOW_START</code> e <code>WINDOW_END</code>, su cui poi si aggrega. Il modello è quello delle window table function di Apache Flink, applicato ai dati delle tabelle.</p></header><figure class="fig wide"><div class="fig-scroll"><svg class="dg" viewBox="0 0 800 374" role="img" aria-label="Dieci ordini tra le 8 e le 13 e le finestre generate da TUMBLE, HOP, CUMULATE e SESSIONS"><line class="dg-grid" x1="172.0" y1="26" x2="172.0" y2="366"/><text class="dg-axis" x="172.0" y="16" text-anchor="middle">07:00</text><line class="dg-grid" x1="259.4" y1="26" x2="259.4" y2="366"/><text class="dg-axis" x="259.4" y="16" text-anchor="middle">08:00</text><line class="dg-grid" x1="346.9" y1="26" x2="346.9" y2="366"/><text class="dg-axis" x="346.9" y="16" text-anchor="middle">09:00</text><line class="dg-grid" x1="434.3" y1="26" x2="434.3" y2="366"/><text class="dg-axis" x="434.3" y="16" text-anchor="middle">10:00</text><line class="dg-grid" x1="521.7" y1="26" x2="521.7" y2="366"/><text class="dg-axis" x="521.7" y="16" text-anchor="middle">11:00</text><line class="dg-grid" x1="609.1" y1="26" x2="609.1" y2="366"/><text class="dg-axis" x="609.1" y="16" text-anchor="middle">12:00</text><line class="dg-grid" x1="696.6" y1="26" x2="696.6" y2="366"/><text class="dg-axis" x="696.6" y="16" text-anchor="middle">13:00</text><line class="dg-grid" x1="784.0" y1="26" x2="784.0" y2="366"/><text class="dg-axis" x="784.0" y="16" text-anchor="middle">14:00</text><text class="dg-lbl" x="8" y="48">Ordini</text><text class="dg-lbl" x="8" y="80">TUMBLE</text><text class="dg-sub" x="8" y="95">1 h</text><text class="dg-lbl" x="8" y="128">HOP</text><text class="dg-sub" x="8" y="143">2 h, una ogni ora</text><text class="dg-lbl" x="8" y="204">CUMULATE</text><text class="dg-sub" x="8" y="219">+1 h, max 1 giorno</text><text class="dg-lbl" x="8" y="332">SESSIONS</text><text class="dg-sub" x="8" y="347">pausa max 30 min</text><circle class="dg-ev" cx="266.7" cy="44" r="4.5"/><circle class="dg-ev" cx="288.6" cy="44" r="4.5"/><circle class="dg-ev" cx="329.4" cy="44" r="4.5"/><circle class="dg-ev" cx="361.4" cy="44" r="4.5"/><circle class="dg-ev" cx="364.3" cy="44" r="4.5"/><circle class="dg-ev" cx="402.2" cy="44" r="4.5"/><circle class="dg-ev" cx="514.4" cy="44" r="4.5"/><circle class="dg-ev" cx="529.0" cy="44" r="4.5"/><circle class="dg-ev" cx="565.4" cy="44" r="4.5"/><circle class="dg-ev" cx="674.7" cy="44" r="4.5"/><rect class="dg-empty" x="173.5" y="68" width="84.4" height="26" rx="3"/><rect class="dg-win" x="260.9" y="68" width="84.5" height="26" rx="3"/><text class="dg-num" x="303.1" y="85.0" text-anchor="middle">3 · 245</text><rect class="dg-win" x="348.4" y="68" width="84.4" height="26" rx="3"/><text class="dg-num" x="390.6" y="85.0" text-anchor="middle">3 · 295</text><rect class="dg-win" x="435.8" y="68" width="84.4" height="26" rx="3"/><text class="dg-num" x="478.0" y="85.0" text-anchor="middle">1 · 150</text><rect class="dg-win" x="523.2" y="68" width="84.4" height="26" rx="3"/><text class="dg-num" x="565.4" y="85.0" text-anchor="middle">2 · 165</text><rect class="dg-win" x="610.6" y="68" width="84.5" height="26" rx="3"/><text class="dg-num" x="652.9" y="85.0" text-anchor="middle">1 · 300</text><rect class="dg-empty" x="698.1" y="68" width="84.4" height="26" rx="3"/><rect class="dg-win" x="173.5" y="112" width="171.9" height="21" rx="3"/><text class="dg-num" x="259.4" y="126.5" text-anchor="middle">3 · 245</text><rect class="dg-win" x="348.4" y="112" width="171.8" height="21" rx="3"/><text class="dg-num" x="434.3" y="126.5" text-anchor="middle">4 · 445</text><rect class="dg-win" x="523.2" y="112" width="171.9" height="21" rx="3"/><text class="dg-num" x="609.2" y="126.5" text-anchor="middle">3 · 465</text><rect class="dg-win" x="260.9" y="137" width="171.9" height="21" rx="3"/><text class="dg-num" x="346.9" y="151.5" text-anchor="middle">6 · 540</text><rect class="dg-win" x="435.8" y="137" width="171.8" height="21" rx="3"/><text class="dg-num" x="521.7" y="151.5" text-anchor="middle">3 · 315</text><rect class="dg-win" x="610.6" y="137" width="171.9" height="21" rx="3"/><text class="dg-num" x="696.5" y="151.5" text-anchor="middle">1 · 300</text><text class="dg-sub" x="176" y="178">← iniziano tutte alle 00:00</text><rect class="dg-win" x="172" y="186" width="173.4" height="15" rx="2"/><text class="dg-num" x="339.4" y="197.5" text-anchor="end">3 · 245</text><rect class="dg-win" x="172" y="205" width="260.8" height="15" rx="2"/><text class="dg-num" x="426.8" y="216.5" text-anchor="end">6 · 540</text><rect class="dg-win" x="172" y="224" width="348.2" height="15" rx="2"/><text class="dg-num" x="514.2" y="235.5" text-anchor="end">7 · 690</text><rect class="dg-win" x="172" y="243" width="435.6" height="15" rx="2"/><text class="dg-num" x="601.6" y="254.5" text-anchor="end">9 · 855</text><rect class="dg-win" x="172" y="262" width="523.1" height="15" rx="2"/><text class="dg-num" x="689.1" y="273.5" text-anchor="end">10 · 1155</text><rect class="dg-win" x="266.7" y="324" width="135.5" height="24" rx="3"/><rect class="dg-tail" x="402.2" y="324" width="43.7" height="24" rx="3"/><text class="dg-num" x="356.3" y="340" text-anchor="middle">6 · 540</text><rect class="dg-win" x="514.4" y="324" width="51.0" height="24" rx="3"/><rect class="dg-tail" x="565.4" y="324" width="43.7" height="24" rx="3"/><text class="dg-num" x="561.8" y="340" text-anchor="middle">3 · 315</text><rect class="dg-tail" x="674.7" y="324" width="43.7" height="24" rx="3"/><text class="dg-num" x="723.4" y="340" text-anchor="start">1 · 300</text><circle class="dg-ev-in" cx="266.7" cy="354" r="2.5"/><circle class="dg-ev-in" cx="288.6" cy="354" r="2.5"/><circle class="dg-ev-in" cx="329.4" cy="354" r="2.5"/><circle class="dg-ev-in" cx="361.4" cy="354" r="2.5"/><circle class="dg-ev-in" cx="364.3" cy="354" r="2.5"/><circle class="dg-ev-in" cx="402.2" cy="354" r="2.5"/><circle class="dg-ev-in" cx="514.4" cy="354" r="2.5"/><circle class="dg-ev-in" cx="529.0" cy="354" r="2.5"/><circle class="dg-ev-in" cx="565.4" cy="354" r="2.5"/><circle class="dg-ev-in" cx="674.7" cy="354" r="2.5"/><path class="dg-dim" d="M402.2 314 V308 H514.4 V314"/><text class="dg-sub" x="458.3" y="303" text-anchor="middle">pausa 77 min</text><path class="dg-dim" d="M565.4 314 V308 H674.7 V314"/><text class="dg-sub" x="620.0" y="303" text-anchor="middle">pausa 75 min</text></svg></div><figcaption><span class="scroll-hint">Scorri il diagramma in orizzontale. </span>Dieci ordini di una mattina e le finestre che ogni funzione genera. Nei riquadri: numero di ordini · totale in euro. Le finestre tratteggiate di TUMBLE non contengono righe e non compaiono nel risultato. In SESSIONS la parte tratteggiata è la coda di 30 minuti dopo l'ultimo ordine; CUMULATE continua con 14:00, 15:00 … 24:00, sempre 10 · 1155.</figcaption></figure><div class="tbl"><table><thead><tr><th>Funzione</th><th>Argomenti dopo tabella e COLUMNS(colonna)</th><th>Finestre</th><th>Una riga finisce in</th></tr></thead><tbody><tr><td><code>TUMBLE</code></td><td>durata</td><td>Consecutive, stessa durata, senza sovrapposizioni.</td><td>1 finestra</td></tr><tr><td><code>HOP</code></td><td>passo, durata</td><td>Stessa durata, una nuova ogni passo: si sovrappongono.</td><td>durata ÷ passo finestre</td></tr><tr><td><code>CUMULATE</code></td><td>passo, durata massima</td><td>Stesso inizio, si allungano di un passo fino al massimo.</td><td>tutte quelle che finiscono dopo di lei</td></tr><tr><td><code>SESSIONS</code></td><td>pausa</td><td>Decise dai dati: se tra due righe consecutive passa più della pausa, ne inizia una nuova.</td><td>1 finestra</td></tr></tbody></table></div><p>Gli argomenti di tempo sono letterali <code>INTERVAL</code> (anni e mesi, oppure giorni, ore, minuti e secondi). In <code>HOP</code> il passo viene prima della durata.</p><h3>Le query delle slide, schema HR</h3><div class="cmp"><div class="cmp-col"><p class="cmp-t old">TUMBLE</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, <span class="f">count</span> (*)
+<span class="k">from</span>   <mark class="nw"><span class="f">tumble</span> (
+  hr.employees,       <span class="c">-- group these rows</span>
+  <span class="k">columns</span> ( hire_date ), <span class="c">-- on this column</span>
+  <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span>   <span class="c">-- into 2 year windows</span>
+)</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span> <span class="k">order</span> <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>WINDOW_START           COUNT(*)
+-------------------- ----------
+01-JAN-2010 00:00:00          1
+01-JAN-2012 00:00:00         13
+01-JAN-2014 00:00:00         39
+01-JAN-2016 00:00:00         43
+01-JAN-2018 00:00:00         11</pre></div></div><div class="cmp-col"><p class="cmp-t new">HOP</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, <span class="f">count</span> (*)
+<span class="k">from</span>   <mark class="nw"><span class="f">hop</span> (
+  hr.employees,       <span class="c">-- group these rows</span>
+  <span class="k">columns</span> ( hire_date ), <span class="c">-- on this column</span>
+  <span class="k">interval</span> <span class="s">'6'</span> <span class="k">month</span>, <span class="c">-- starting every 6 months</span>
+  <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span>   <span class="c">-- into 2 year windows</span>
+)</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span> <span class="k">order</span> <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>WINDOW_START           COUNT(*)
+-------------------- ----------
+01-JUL-2009 00:00:00          1
+01-JAN-2010 00:00:00          1
+01-JUL-2010 00:00:00          5
+01-JAN-2011 00:00:00          8
+...</pre></div></div></div><ul class="list"><li><strong>TUMBLE:</strong> finestre di due anni allineate agli anni pari (2010, 2012…), indipendentemente dal primo dato. 1 + 13 + 39 + 43 + 11 = 107 dipendenti: ognuno sta in una sola finestra.</li><li><strong>HOP:</strong> finestre di due anni che partono ogni sei mesi, quindi ogni dipendente cade in quattro finestre. La prima parte a luglio 2009 perché contiene già l'assunzione del 13 gennaio 2011. Le righe in tutto sono 18 e la somma dei conteggi è 428, cioè 4 × 107.</li></ul><div class="cmp"><div class="cmp-col"><p class="cmp-t old">CUMULATE</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span> (*)
+<span class="k">from</span>   <mark class="nw"><span class="f">cumulate</span> (
+  hr.employees,       <span class="c">-- group these rows</span>
+  <span class="k">columns</span> ( hire_date ), <span class="c">-- on this column</span>
+  <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span>,  <span class="c">-- adding 2 years</span>
+  <span class="k">interval</span> <span class="s">'10'</span> <span class="k">year</span>  <span class="c">-- up to 10 years</span>
+)</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span> <span class="k">order</span> <span class="k">by</span> window_start, window_end;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>WINDOW_START         WINDOW_END             COUNT(*)
+-------------------- -------------------- ----------
+01-JAN-2010 00:00:00 01-JAN-2012 00:00:00          1
+01-JAN-2010 00:00:00 01-JAN-2014 00:00:00         14
+01-JAN-2010 00:00:00 01-JAN-2016 00:00:00         53
+01-JAN-2010 00:00:00 01-JAN-2018 00:00:00         96
+01-JAN-2010 00:00:00 01-JAN-2020 00:00:00        107</pre></div></div><div class="cmp-col"><p class="cmp-t new">SESSIONS</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span> (*)
+<span class="k">from</span>   <mark class="nw"><span class="f">sessions</span> (
+  hr.employees,       <span class="c">-- group these rows</span>
+  <span class="k">columns</span> ( hire_date ), <span class="c">-- on this column</span>
+  <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span>   <span class="c">-- where row is within 2 years of previous</span>
+)</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span> <span class="k">order</span> <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip slide">slide 23.26.4</span></div><pre>WINDOW_START         WINDOW_END             COUNT(*)
+-------------------- -------------------- ----------
+13-JAN-2011 00:00:00 21-APR-2020 00:00:00        107</pre></div></div></div><ul class="list"><li><strong>CUMULATE:</strong> tutte le finestre partono il 1° gennaio 2010 (allineamento ai 10 anni) e si allungano di due anni alla volta. I conteggi sono i totali progressivi di TUMBLE: 1, 1+13, 14+39, 53+43, 96+11.</li><li><strong>SESSIONS:</strong> tra due assunzioni consecutive non passano mai due anni (la pausa più lunga è di 511 giorni), quindi c'è una sola sessione. <code>WINDOW_END</code> è l'ultima assunzione, 21 aprile 2018, più la pausa: 21 aprile 2020.</li></ul><h3>Esempi su un caso più concreto: le vendite di una mattina</h3><div class="code"><div class="blk-h"><span class="blk-t">Dati di esempio</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">create</span> <span class="k">table</span> vendite (
+  id      <span class="k">number</span> <span class="k">generated</span> <span class="k">always</span> <span class="k">as</span> <span class="k">identity</span> <span class="k">primary</span> <span class="k">key</span>,
+  ts      <span class="k">timestamp</span> <span class="k">not</span> <span class="k">null</span>,
+  negozio <span class="k">varchar2</span>(<span class="n">10</span>) <span class="k">not</span> <span class="k">null</span>,
+  importo <span class="k">number</span>(<span class="n">10</span>,<span class="n">2</span>) <span class="k">not</span> <span class="k">null</span>
+);
+<span class="k">insert</span> <span class="k">into</span> vendite (ts, negozio, importo) <span class="k">values</span>
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 08:05:00'</span>, <span class="s">'Milano'</span>, <span class="n">120</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 08:20:00'</span>, <span class="s">'Roma'</span>,    <span class="n">80</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 08:48:00'</span>, <span class="s">'Milano'</span>,  <span class="n">45</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 09:10:00'</span>, <span class="s">'Roma'</span>,   <span class="n">200</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 09:12:00'</span>, <span class="s">'Milano'</span>,  <span class="n">60</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 09:38:00'</span>, <span class="s">'Roma'</span>,    <span class="n">35</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 10:55:00'</span>, <span class="s">'Milano'</span>, <span class="n">150</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 11:05:00'</span>, <span class="s">'Roma'</span>,    <span class="n">90</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 11:30:00'</span>, <span class="s">'Milano'</span>,  <span class="n">75</span>),
+  (<span class="k">timestamp</span> <span class="s">'2026-10-26 12:45:00'</span>, <span class="s">'Roma'</span>,   <span class="n">300</span>);
+<span class="k">commit</span>;</code></pre></div><p>Gli output qui sotto sono calcolati su 23.26.3 applicando a questa tabella le query equivalenti mostrate più avanti, le stesse che riproducono esattamente i risultati delle slide.</p><h4>TUMBLE: ordini per ora, anche per negozio</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) totale
+<span class="k">from</span>   <mark class="nw"><span class="f">tumble</span> ( vendite, <span class="k">columns</span> ( ts ), <span class="k">interval</span> <span class="s">'1'</span> <span class="k">hour</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START      WINDOW_END        ORDINI TOTALE
+----------------- ----------------- ------ ------
+26-OCT-2026 08:00 26-OCT-2026 09:00      3    245
+26-OCT-2026 09:00 26-OCT-2026 10:00      3    295
+26-OCT-2026 10:00 26-OCT-2026 11:00      1    150
+26-OCT-2026 11:00 26-OCT-2026 12:00      2    165
+26-OCT-2026 12:00 26-OCT-2026 13:00      1    300</pre></div><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, negozio, <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) totale
+<span class="k">from</span>   <mark class="nw"><span class="f">tumble</span> ( vendite, <span class="k">columns</span> ( ts ), <span class="k">interval</span> <span class="s">'1'</span> <span class="k">hour</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start, negozio;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START      NEGOZIO ORDINI TOTALE
+----------------- ------- ------ ------
+26-OCT-2026 08:00 Milano       2    165
+26-OCT-2026 08:00 Roma         1     80
+26-OCT-2026 09:00 Milano       1     60
+26-OCT-2026 09:00 Roma         2    235
+26-OCT-2026 10:00 Milano       1    150
+26-OCT-2026 11:00 Milano       1     75
+26-OCT-2026 11:00 Roma         1     90
+26-OCT-2026 12:00 Roma         1    300</pre></div><h4>HOP: finestre di due ore, una ogni ora</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) totale
+<span class="k">from</span>   <mark class="nw"><span class="f">hop</span> ( vendite, <span class="k">columns</span> ( ts ), <span class="k">interval</span> <span class="s">'1'</span> <span class="k">hour</span>, <span class="k">interval</span> <span class="s">'2'</span> <span class="k">hour</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START      WINDOW_END        ORDINI TOTALE
+----------------- ----------------- ------ ------
+26-OCT-2026 07:00 26-OCT-2026 09:00      3    245
+26-OCT-2026 08:00 26-OCT-2026 10:00      6    540
+26-OCT-2026 09:00 26-OCT-2026 11:00      4    445
+26-OCT-2026 10:00 26-OCT-2026 12:00      3    315
+26-OCT-2026 11:00 26-OCT-2026 13:00      3    465
+26-OCT-2026 12:00 26-OCT-2026 14:00      1    300</pre></div><h4>CUMULATE: progressivo della giornata, ora per ora</h4><p>È l'esempio citato nel post: il totale della giornata aggiornato ogni ora.</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) progressivo
+<span class="k">from</span>   <mark class="nw"><span class="f">cumulate</span> ( vendite, <span class="k">columns</span> ( ts ), <span class="k">interval</span> <span class="s">'1'</span> <span class="k">hour</span>, <span class="k">interval</span> <span class="s">'1'</span> <span class="k">day</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_end;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START      WINDOW_END        ORDINI PROGRESSIVO
+----------------- ----------------- ------ -----------
+26-OCT-2026 00:00 26-OCT-2026 09:00      3         245
+26-OCT-2026 00:00 26-OCT-2026 10:00      6         540
+26-OCT-2026 00:00 26-OCT-2026 11:00      7         690
+26-OCT-2026 00:00 26-OCT-2026 12:00      9         855
+26-OCT-2026 00:00 26-OCT-2026 13:00     10        1155
+26-OCT-2026 00:00 26-OCT-2026 14:00     10        1155
+...   (una riga per ogni ora fino a 27-OCT-2026 00:00, sempre 10 e 1155: 16 righe in tutto)</pre></div><h4>SESSIONS: raffiche di ordini separate da almeno 30 minuti</h4><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip new">23.26.4</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">select</span> window_start, window_end, <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) totale
+<span class="k">from</span>   <mark class="nw"><span class="f">sessions</span> ( vendite, <span class="k">columns</span> ( ts ), <span class="k">interval</span> <span class="s">'30'</span> <span class="k">minute</span> )</mark>
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip exp">atteso</span></div><pre>WINDOW_START      WINDOW_END        ORDINI TOTALE
+----------------- ----------------- ------ ------
+26-OCT-2026 08:05 26-OCT-2026 10:08      6    540
+26-OCT-2026 10:55 26-OCT-2026 12:00      3    315
+26-OCT-2026 12:45 26-OCT-2026 13:15      1    300</pre></div><p>Per avere sessioni distinte per negozio o per utente serve partizionare. Le slide non lo mostrano: la sintassi delle polymorphic table function prevede <code>PARTITION BY</code> sulla tabella e Flink lo prevede per <code>SESSION</code>, ma verifica nel manuale della 23.26.4 prima di contarci. Con SQL classico funziona comunque:</p><div class="code"><div class="blk-h"><span class="blk-t">SQL</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="k">with</span> segnate <span class="k">as</span> (
+  <span class="k">select</span> v.*,
+         <span class="k">case</span> <span class="k">when</span> ts &lt;= <span class="f">lag</span>(ts) <span class="k">over</span> (<span class="k">partition</span> <span class="k">by</span> negozio <span class="k">order</span> <span class="k">by</span> ts) + <span class="k">interval</span> <span class="s">'30'</span> <span class="k">minute</span>
+              <span class="k">then</span> <span class="n">0</span> <span class="k">else</span> <span class="n">1</span> <span class="k">end</span> nuova
+  <span class="k">from</span>   vendite v
+), numerate <span class="k">as</span> (
+  <span class="k">select</span> s.*, <span class="f">sum</span>(nuova) <span class="k">over</span> (<span class="k">partition</span> <span class="k">by</span> negozio <span class="k">order</span> <span class="k">by</span> ts) sessione
+  <span class="k">from</span>   segnate s
+)
+<span class="k">select</span> negozio, <span class="f">min</span>(ts) window_start, <span class="f">max</span>(ts) + <span class="k">interval</span> <span class="s">'30'</span> <span class="k">minute</span> window_end,
+       <span class="f">count</span>(*) ordini, <span class="f">sum</span>(importo) totale
+<span class="k">from</span>   numerate
+<span class="k">group</span>  <span class="k">by</span> negozio, sessione
+<span class="k">order</span>  <span class="k">by</span> negozio, window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>NEGOZIO WINDOW_START      WINDOW_END        ORDINI TOTALE
+------- ----------------- ----------------- ------ ------
+Milano  26-OCT-2026 08:05 26-OCT-2026 08:35      1    120
+Milano  26-OCT-2026 08:48 26-OCT-2026 09:42      2    105
+Milano  26-OCT-2026 10:55 26-OCT-2026 11:25      1    150
+Milano  26-OCT-2026 11:30 26-OCT-2026 12:00      1     75
+Roma    26-OCT-2026 08:20 26-OCT-2026 08:50      1     80
+Roma    26-OCT-2026 09:10 26-OCT-2026 10:08      2    235
+Roma    26-OCT-2026 11:05 26-OCT-2026 11:35      1     90
+Roma    26-OCT-2026 12:45 26-OCT-2026 13:15      1    300</pre></div><h3>Prima della 23.26.4: le query equivalenti</h3><p>Queste query riproducono esattamente i risultati delle slide su 23.26.3 e mostrano cosa fa ogni funzione. <code>TIME_BUCKET</code>, già presente nelle release precedenti, restituisce l'inizio dell'intervallo a cui appartiene una data, contando da un'origine.</p><div class="code"><div class="blk-h"><span class="blk-t">TUMBLE</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- TUMBLE ( hr.employees, columns ( hire_date ), interval '2' year )</span>
+<span class="k">select</span> <span class="f">time_bucket</span>(hire_date, <span class="k">interval</span> <span class="s">'2'</span> <span class="k">year</span>, <span class="k">date</span> <span class="s">'1970-01-01'</span>) window_start, <span class="f">count</span>(*)
+<span class="k">from</span>   hr.employees
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>WINDOW_START COUNT(*)
+----------- --------
+01-JAN-2010        1
+01-JAN-2012       13
+01-JAN-2014       39
+01-JAN-2016       43
+01-JAN-2018       11</pre></div><div class="code"><div class="blk-h"><span class="blk-t">HOP</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- HOP ( ..., interval '6' month, interval '2' year ): ogni riga in 2 anni / 6 mesi = 4 finestre</span>
+<span class="k">select</span> <span class="f">add_months</span>(<span class="f">time_bucket</span>(e.hire_date, <span class="k">interval</span> <span class="s">'6'</span> <span class="k">month</span>, <span class="k">date</span> <span class="s">'1970-01-01'</span>), -<span class="n">6</span> * n.k) window_start,
+       <span class="f">count</span>(*)
+<span class="k">from</span>   hr.employees e
+<span class="k">cross</span>  <span class="k">join</span> (<span class="k">select</span> <span class="k">level</span> - <span class="n">1</span> k <span class="k">connect</span> <span class="k">by</span> <span class="k">level</span> &lt;= <span class="n">4</span>) n
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><div class="out"><div class="blk-h"><span class="blk-t">Risultato</span><span class="chip run">eseguito 23.26.3</span></div><pre>WINDOW_START           COUNT(*)
+-------------------- ----------
+01-JUL-2009 00:00:00          1
+01-JAN-2010 00:00:00          1
+01-JUL-2010 00:00:00          5
+01-JAN-2011 00:00:00          8
+01-JUL-2011 00:00:00         10
+01-JAN-2012 00:00:00         13
+01-JUL-2012 00:00:00         16
+01-JAN-2013 00:00:00         16
+01-JUL-2013 00:00:00         27
+01-JAN-2014 00:00:00         39
+01-JUL-2014 00:00:00         48
+01-JAN-2015 00:00:00         53
+01-JUL-2015 00:00:00         51
+01-JAN-2016 00:00:00         43
+01-JUL-2016 00:00:00         38
+01-JAN-2017 00:00:00         30
+01-JUL-2017 00:00:00         18
+01-JAN-2018 00:00:00         11</pre></div><div class="code"><div class="blk-h"><span class="blk-t">CUMULATE</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- CUMULATE ( ..., interval '2' year, interval '10' year ): 10 / 2 = 5 passi</span>
+<span class="k">select</span> <span class="f">time_bucket</span>(e.hire_date, <span class="k">interval</span> <span class="s">'10'</span> <span class="k">year</span>, <span class="k">date</span> <span class="s">'1970-01-01'</span>) window_start,
+       <span class="f">add_months</span>(<span class="f">time_bucket</span>(e.hire_date, <span class="k">interval</span> <span class="s">'10'</span> <span class="k">year</span>, <span class="k">date</span> <span class="s">'1970-01-01'</span>), <span class="n">24</span> * n.k) window_end,
+       <span class="f">count</span>(*)
+<span class="k">from</span>   hr.employees e
+<span class="k">cross</span>  <span class="k">join</span> (<span class="k">select</span> <span class="k">level</span> k <span class="k">connect</span> <span class="k">by</span> <span class="k">level</span> &lt;= <span class="n">5</span>) n
+<span class="k">where</span>  e.hire_date &lt; <span class="f">add_months</span>(<span class="f">time_bucket</span>(e.hire_date, <span class="k">interval</span> <span class="s">'10'</span> <span class="k">year</span>, <span class="k">date</span> <span class="s">'1970-01-01'</span>), <span class="n">24</span> * n.k)
+<span class="k">group</span>  <span class="k">by</span> <span class="k">all</span>
+<span class="k">order</span>  <span class="k">by</span> window_start, window_end;</code></pre></div><div class="code"><div class="blk-h"><span class="blk-t">SESSIONS</span><span class="chip old">fino a 23.26.3</span><button class="copy" type="button">Copia</button></div><pre><code><span class="c">-- SESSIONS ( ..., interval '2' year ): isole e buchi con LAG e somma progressiva</span>
+<span class="k">with</span> segnate <span class="k">as</span> (
+  <span class="k">select</span> hire_date,
+         <span class="k">case</span> <span class="k">when</span> hire_date &lt;= <span class="f">add_months</span>(<span class="f">lag</span>(hire_date) <span class="k">over</span> (<span class="k">order</span> <span class="k">by</span> hire_date), <span class="n">24</span>)
+              <span class="k">then</span> <span class="n">0</span> <span class="k">else</span> <span class="n">1</span> <span class="k">end</span> nuova_sessione
+  <span class="k">from</span>   hr.employees
+), numerate <span class="k">as</span> (
+  <span class="k">select</span> hire_date, <span class="f">sum</span>(nuova_sessione) <span class="k">over</span> (<span class="k">order</span> <span class="k">by</span> hire_date) sessione
+  <span class="k">from</span>   segnate
+)
+<span class="k">select</span> <span class="f">min</span>(hire_date) window_start, <span class="f">add_months</span>(<span class="f">max</span>(hire_date), <span class="n">24</span>) window_end, <span class="f">count</span>(*)
+<span class="k">from</span>   numerate
+<span class="k">group</span>  <span class="k">by</span> sessione
+<span class="k">order</span>  <span class="k">by</span> window_start;</code></pre></div><p>Per CUMULATE e SESSIONS i risultati coincidono con quelli delle slide (1, 14, 53, 96, 107 e una sessione da 107 righe).</p><div class="warn"><p class="warn-t">Attenzione</p><ul class="list"><li><strong>Le finestre vuote non compaiono.</strong> Nell'esempio delle vendite non c'è la riga 07:00–08:00. Se servono gli zeri, fai un outer join con un calendario.</li><li><strong>HOP e CUMULATE moltiplicano le righe.</strong> La somma dei conteggi delle finestre non è il totale: nella slide di HOP fa 428, cioè 4 × 107.</li><li><strong>Inizio incluso, fine esclusa.</strong> Una vendita delle 09:00:00 cade nella finestra 09:00–10:00.</li><li><strong>Allineamento fisso.</strong> Le finestre partono da istanti fissi (anni pari, ore piene), non dalla prima riga. Per un'origine diversa, come un anno fiscale che inizia ad aprile o turni che partono alle 6:00, <code>TIME_BUCKET</code> accetta un'origine esplicita.</li><li><strong>Batch, non streaming.</strong> I nomi vengono dallo streaming SQL, ma qui le funzioni lavorano sui dati presenti nella tabella al momento della query.</li></ul></div></section><section id="altro" class="feat"><header class="feat-h"><p class="eyebrow">Dettagli visti nelle slide</p><h2>Altre cose che compaiono nelle slide</h2><p class="kicker">Alcuni elementi delle slide non sono novità della 23.26.4 ma è utile riconoscerli.</p></header><dl class="defs"><dt><code>GROUP BY ALL</code></dt><dd>Raggruppa per tutte le espressioni della <code>SELECT</code> che non contengono funzioni di aggregazione. Funziona già su 23.26.3.</dd><dt><code>SELECT</code> senza <code>FROM</code></dt><dd>Da 23ai <code>FROM DUAL</code> è facoltativo, anche con <code>CONNECT BY</code>: <code>select uuid(7) … connect by level &lt;= 5</code>.</dd><dt><code>QUALIFY</code></dt><dd>Filtra sul risultato delle funzioni analitiche senza subquery. Funziona già su 23.26.3.</dd><dt>Macro nella <code>WITH</code></dt><dd>Novità della 23.26.4 non citata nel post: le SQL macro si possono usare dentro la clausola <code>WITH</code>.</dd></dl></section><section id="fonti" class="feat"><header class="feat-h"><p class="eyebrow">Fonti</p><h2>Fonti</h2></header><ul class="list src"><li>Chris Saxon, post LinkedIn “Oracle AI Database 23.26.4 is here!” e slide allegate</li><li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/nfcoa/appdev_sql.html" target="_blank" rel="noopener">Oracle AI Database 26ai New Features: SQL</a></li><li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/SELECT.html" target="_blank" rel="noopener">SQL Language Reference 26: SELECT</a></li><li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/uuid.html" target="_blank" rel="noopener">SQL Language Reference 26: UUID</a></li><li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/time_bucket-datetime.html" target="_blank" rel="noopener">SQL Language Reference 26: TIME_BUCKET</a></li><li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/26/lnpls/SQL_MACRO-clause.html" target="_blank" rel="noopener">PL/SQL Language Reference 26: SQL_MACRO clause</a></li><li><a href="https://blogs.oracle.com/sql/how-to-create-views-with-parameters-in-oracle-ai-database" target="_blank" rel="noopener">All Things SQL: How to create views with parameters in Oracle AI Database</a></li><li><a href="https://oracle-base.com/articles/23/uuid-function-23" target="_blank" rel="noopener">ORACLE-BASE: UUID function in 23ai</a></li><li><a href="https://asktom.oracle.com/ords/asktom.search?tag=fetch-limited-rows-for-update" target="_blank" rel="noopener">Ask TOM: Fetch limited rows for update</a></li><li><a href="https://nightlies.apache.org/flink/flink-docs-stable/docs/sql/reference/queries/window-tvf/" target="_blank" rel="noopener">Apache Flink: Windowing table-valued functions</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9562" target="_blank" rel="noopener">RFC 9562: Universally Unique IDentifiers (UUIDs)</a></li><li><a href="https://github.com/oracle-samples/db-sample-schemas" target="_blank" rel="noopener">Schema HR: oracle-samples/db-sample-schemas</a></li></ul></section>
+<footer class="foot">Prove eseguite il 26 ottobre 2026 su Oracle AI Database 26ai Free 23.26.3.0.0 (immagine
+container gvenzl/oracle-free) con lo schema HR di oracle-samples/db-sample-schemas.</footer>
+</main>
+<script>
+document.querySelectorAll(".copy").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var code = btn.closest(".code").querySelector("code");
+    var text = code.textContent;
+    var reset = function () { setTimeout(function () { btn.textContent = "Copia"; }, 1600); };
+    var selectText = function () {
+      var range = document.createRange();
+      range.selectNodeContents(code);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      btn.textContent = "Selezionato";
+      reset();
+    };
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copiato";
+        reset();
+      }, selectText);
+    } catch (e) {
+      selectText();
+    }
+  });
+});
+
+</script>
+</body>
+</html>
